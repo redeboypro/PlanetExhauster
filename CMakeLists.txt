@@ -8,4 +8,10 @@ add_executable(PlanetExhauster main.cpp
         GLAPI.h
         Window.cpp
         Window.h
+        Math/Vector3D.h
+        Math/Vector.h
+        Math/Matrix.h
+        Math/Matrix4x4.h
 )
+
+target_link_libraries(PlanetExhauster opengl32)

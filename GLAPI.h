@@ -7,6 +7,7 @@
 
 #include <cstdint>
 #include <windows.h>
+#include "GL/gl.h"
 
 #define DUMMY_WND_CLASSNAME "_DUMMY_WND"
 #define GLMSG L"GL"
@@ -29,18 +30,142 @@
 #define WGL_FULL_ACCELERATION_ARB                 0x2027
 #define WGL_TYPE_RGBA_ARB                         0x202B
 
-using wglCreateContextAttribsARBPtrt = HGLRC __attribute__((__stdcall__))(HDC hdc, HGLRC hShareContext, const int32_t *attribList);
-using wglChoosePixelFormatARBPtrt = bool __attribute__((__stdcall__))(HDC hdc,
+#define GLdataptr void*
+typedef ptrdiff_t GLsizeiptr;
+typedef char GLchar;
+
+using wglCreateContextAttribsARBPtrt = HGLRC WINAPI(
+    HDC hdc,
+    HGLRC hShareContext,
+    const int32_t *attribList);
+using wglChoosePixelFormatARBPtrt = bool WINAPI(
+    HDC hdc,
     const int32_t* piAttribIList,
     const float* pfAttribFList,
     uint32_t nMaxFormats,
     int32_t* piFormats,
     uint32_t *nNumFormats);
+using wglSwapIntervalEXTPtrt = int32_t WINAPI(int32_t interval);
+using glActiveTexturePtrt = void WINAPI(GLenum texture);
+using glGenVertexArraysPtrt = void WINAPI(GLsizei n, GLuint* arrays);
+using glDeleteVertexArraysPtrt = void WINAPI(GLsizei n, const GLuint *arrays);
+using glBindVertexArrayPtrt = void WINAPI(GLuint array);
+using glGenBuffersPtrt = void WINAPI(GLsizei n, GLuint* buffers);
+using glDeleteBuffersPtrt = void WINAPI(GLsizei n, const GLuint* buffers);
+using glBindBufferPtrt = void WINAPI(GLenum target, GLuint buffer);
+using glBufferDataPtrt = void WINAPI(
+    GLenum target,
+    GLsizeiptr size,
+    const GLdataptr data,
+    GLenum usage);
+using glEnableVertexAttribArrayPtrt = void WINAPI(GLuint index);
+using glDisableVertexAttribArrayPtrt = void WINAPI(GLuint index);
+using glVertexAttribPointerPtrt = void WINAPI(
+    GLuint index,
+    GLint size,
+    GLenum type,
+    GLboolean normalized,
+    GLsizei stride,
+    const GLdataptr pointer);
+using glCreateProgramPtrt = GLuint WINAPI();
+using glAttachShaderPtrt = void WINAPI(GLuint program, GLuint shader);
+using glDetachShaderPtrt = void WINAPI(GLuint program, GLuint shader);
+using glLinkProgramPtrt = void WINAPI(GLuint program);
+using glValidateProgramPtrt = void WINAPI(GLuint program);
+using glUseProgramPtrt = void WINAPI(GLuint program);
+using glDeleteShaderPtrt = void WINAPI(GLuint shader);
+using glDeleteProgramPtrt = void WINAPI(GLuint program);
+using glBindAttribLocationPtrt = void WINAPI(
+    GLuint program,
+    GLuint index,
+    const GLchar* name);
+using glUniform1fPtrt = void WINAPI(GLint location, GLfloat v0);
+using glUniform2fPtrt = void WINAPI(GLint location, GLfloat v0, GLfloat v1);
+using glUniform3fPtrt = void WINAPI(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+using glUniform4fPtrt = void WINAPI(
+    GLint location,
+    GLfloat v0,
+    GLfloat v1,
+    GLfloat v2,
+    GLfloat v3);
+using glUniform2fvPtrt = void WINAPI(
+    GLint location,
+    GLsizei count,
+    const GLfloat* value);
+using glUniform3fvPtrt = void WINAPI(
+    GLint location,
+    GLsizei count,
+    const GLfloat* value);
+using glUniform1iPtrt = void WINAPI(GLint location, GLint v0);
+using glUniform2iPtrt = void WINAPI(GLint location, GLint v0, GLint v1);
+using glUniform3iPtrt = void WINAPI(GLint location, GLint v0, GLint v1, GLint v2);
+using glUniform4iPtrt = void WINAPI(
+    GLint location,
+    GLint v0,
+    GLint v1,
+    GLint v2,
+    GLint v3);
+using glUniformMatrix4fvPtrt = void WINAPI(
+    GLint location,
+    GLsizei count,
+    GLboolean transpose,
+    const GLfloat* value);
+using glGetUniformLocationPtrt = GLint WINAPI(GLuint program, const GLchar* name);
+using glCreateShaderPtrt = GLuint WINAPI(GLenum type);
+using glShaderSourcePtrt = void WINAPI(
+    GLuint shader,
+    GLsizei count,
+    const GLchar** string,
+    const GLint* length);
+using glGetShaderivPtrt = void WINAPI(GLuint shader, GLenum pname, GLint *params);
+using glGetShaderInfoLogPtrt = void WINAPI(
+    GLuint shader,
+    GLsizei maxLength,
+    GLsizei* length,
+    GLchar* infoLog);
 
 inline wglCreateContextAttribsARBPtrt* wglCreateContextAttribsARB;
 inline wglChoosePixelFormatARBPtrt* wglChoosePixelFormatARB;
+inline wglSwapIntervalEXTPtrt* wglSwapIntervalEXT;
+inline glActiveTexturePtrt* glActiveTexture;
+inline glGenVertexArraysPtrt* glGenVertexArrays;
+inline glDeleteVertexArraysPtrt* glDeleteVertexArrays;
+inline glBindVertexArrayPtrt* glBindVertexArray;
+inline glGenBuffersPtrt* glGenBuffers;
+inline glDeleteBuffersPtrt* glDeleteBuffers;
+inline glBindBufferPtrt* glBindBuffer;
+inline glBufferDataPtrt* glBufferData;
+inline glEnableVertexAttribArrayPtrt* glEnableVertexAttribArray;
+inline glDisableVertexAttribArrayPtrt* glDisableVertexAttribArray;
+inline glVertexAttribPointerPtrt* glVertexAttribPointer;
+inline glCreateProgramPtrt* glCreateProgram;
+inline glAttachShaderPtrt* glAttachShader;
+inline glDetachShaderPtrt* glDetachShader;
+inline glLinkProgramPtrt* glLinkProgram;
+inline glValidateProgramPtrt* glValidateProgram;
+inline glUseProgramPtrt* glUseProgram;
+inline glDeleteShaderPtrt* glDeleteShader;
+inline glDeleteProgramPtrt* glDeleteProgram;
+inline glBindAttribLocationPtrt* glBindAttribLocation;
+inline glUniform1fPtrt* glUniform1f;
+inline glUniform2fPtrt* glUniform2f;
+inline glUniform3fPtrt* glUniform3f;
+inline glUniform4fPtrt* glUniform4f;
+inline glUniform2fvPtrt* glUniform2fv;
+inline glUniform3fvPtrt* glUniform3fv;
+inline glUniform1iPtrt* glUniform1i;
+inline glUniform2iPtrt* glUniform2i;
+inline glUniform3iPtrt* glUniform3i;
+inline glUniform4iPtrt* glUniform4i;
+inline glUniformMatrix4fvPtrt* glUniformMatrix4fv;
+inline glGetUniformLocationPtrt* glGetUniformLocation;
+inline glCreateShaderPtrt* glCreateShader;
+inline glShaderSourcePtrt* glShaderSource;
+inline glGetShaderivPtrt* glGetShaderiv;
+inline glGetShaderInfoLogPtrt* glGetShaderInfoLog;
 
-static void glInitExtensions();
-static HGLRC glInit(HDC hdc);
+void glInitExtensions();
+void glInitFeatures();
+HGLRC glInit(HDC hdc, int32_t major, int32_t minor);
 
 #endif //GLAPI_H

@@ -5,25 +5,35 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 #include <chrono>
-
 #include "GLAPI.h"
 
 #define WND_CLASSNAME "_WND"
 
-typedef void WndUpdPtrt(double delta);
+using WndUpdPtrt = void(double delta);
 
-static HWND InitWnd();
+using TimePt = std::chrono::time_point<std::chrono::system_clock>;
 
-class WindowShell {
+class Window {
     HWND m_wndHandle;
+    HDC m_wndDCHandle;
     HGLRC m_glContextHandle;
     WndUpdPtrt* m_updPtrt;
     bool m_running = true;
-    std::chrono::time_point<std::chrono::system_clock> m_previousTime;
+    TimePt m_previousTime;
 
 public:
-    WindowShell(HWND wndHandle, HGLRC glContextHandle, WndUpdPtrt* updPtrt);
-    ~WindowShell();
+    Window(
+        LPCSTR wndTitle,
+        int32_t wndWidth,
+        int32_t wndHeight,
+        WndUpdPtrt* updPtrt,
+        int32_t glMajor,
+        int32_t glMinor);
+    ~Window();
+
+    void run();
+
+    static void vsync(bool activeState);
 };
 
 #endif //WINDOW_H

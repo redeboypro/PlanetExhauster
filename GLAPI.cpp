@@ -4,6 +4,8 @@
 
 #include "GLAPI.h"
 
+#include <iostream>
+
 void glInitExtensions() {
     const WNDCLASSA dummyWndClass = {
         .style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC,
@@ -39,13 +41,13 @@ void glInitExtensions() {
     PIXELFORMATDESCRIPTOR pixelFormatDescriptor = {
         .nSize = sizeof(PIXELFORMATDESCRIPTOR),
         .nVersion = 1,
-        .iPixelType = PFD_TYPE_RGBA,
         .dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER,
+        .iPixelType = PFD_TYPE_RGBA,
         .cColorBits = 32,
         .cAlphaBits = 8,
-        .iLayerType = PFD_MAIN_PLANE,
         .cDepthBits = 24,
         .cStencilBits = 8,
+        .iLayerType = PFD_MAIN_PLANE,
     };
 
     const int32_t pixelFormat = ChoosePixelFormat(dummyDC, &pixelFormatDescriptor);
@@ -70,11 +72,7 @@ void glInitExtensions() {
         FAIL_EXIT;
     }
 
-    wglCreateContextAttribsARB = reinterpret_cast<wglCreateContextAttribsARBPtrt *>(wglGetProcAddress(
-        "wglCreateContextAttribsARB"));
-
-    wglChoosePixelFormatARB = reinterpret_cast<wglChoosePixelFormatARBPtrt *>(wglGetProcAddress(
-        "wglChoosePixelFormatARB"));
+    glInitFeatures();
 
     wglMakeCurrent(dummyDC, nullptr);
     wglDeleteContext(dummyWGLContext);
@@ -82,9 +80,53 @@ void glInitExtensions() {
     DestroyWindow(dummyWndHandle);
 }
 
-HGLRC glInit(HDC hdc, int32_t major, int32_t minor) {
-    glInitExtensions();
+void glInitFeatures() {
+    wglCreateContextAttribsARB = reinterpret_cast<wglCreateContextAttribsARBPtrt *>(wglGetProcAddress(
+        "wglCreateContextAttribsARB"));
+    wglChoosePixelFormatARB = reinterpret_cast<wglChoosePixelFormatARBPtrt *>(wglGetProcAddress(
+        "wglChoosePixelFormatARB"));
+    wglSwapIntervalEXT = reinterpret_cast<wglSwapIntervalEXTPtrt *>(wglGetProcAddress("wglSwapIntervalEXT"));
+    glActiveTexture = reinterpret_cast<glActiveTexturePtrt *>(wglGetProcAddress("glActiveTexture"));
+    glGenVertexArrays = reinterpret_cast<glGenVertexArraysPtrt *>(wglGetProcAddress("glGenVertexArrays"));
+    glDeleteVertexArrays = reinterpret_cast<glDeleteVertexArraysPtrt *>(wglGetProcAddress("glDeleteVertexArrays"));
+    glBindVertexArray = reinterpret_cast<glBindVertexArrayPtrt *>(wglGetProcAddress("glBindVertexArray"));
+    glGenBuffers = reinterpret_cast<glGenBuffersPtrt *>(wglGetProcAddress("glGenBuffers"));
+    glDeleteBuffers = reinterpret_cast<glDeleteBuffersPtrt *>(wglGetProcAddress("glDeleteBuffers"));
+    glBindBuffer = reinterpret_cast<glBindBufferPtrt *>(wglGetProcAddress("glBindBuffer"));
+    glBufferData = reinterpret_cast<glBufferDataPtrt *>(wglGetProcAddress("glBufferData"));
+    glEnableVertexAttribArray = reinterpret_cast<glEnableVertexAttribArrayPtrt *>(wglGetProcAddress(
+        "glEnableVertexAttribArray"));
+    glDisableVertexAttribArray = reinterpret_cast<glDisableVertexAttribArrayPtrt *>(wglGetProcAddress(
+        "glDisableVertexAttribArray"));
+    glVertexAttribPointer = reinterpret_cast<glVertexAttribPointerPtrt *>(wglGetProcAddress("glVertexAttribPointer"));
+    glCreateProgram = reinterpret_cast<glCreateProgramPtrt *>(wglGetProcAddress("glCreateProgram"));
+    glAttachShader = reinterpret_cast<glAttachShaderPtrt *>(wglGetProcAddress("glAttachShader"));
+    glDetachShader = reinterpret_cast<glDetachShaderPtrt *>(wglGetProcAddress("glDetachShader"));
+    glLinkProgram = reinterpret_cast<glLinkProgramPtrt *>(wglGetProcAddress("glLinkProgram"));
+    glValidateProgram = reinterpret_cast<glValidateProgramPtrt *>(wglGetProcAddress("glValidateProgram"));
+    glUseProgram = reinterpret_cast<glUseProgramPtrt *>(wglGetProcAddress("glUseProgram"));
+    glDeleteShader = reinterpret_cast<glDeleteShaderPtrt *>(wglGetProcAddress("glDeleteShader"));
+    glDeleteProgram = reinterpret_cast<glDeleteProgramPtrt *>(wglGetProcAddress("glDeleteProgram"));
+    glBindAttribLocation = reinterpret_cast<glBindAttribLocationPtrt *>(wglGetProcAddress("glBindAttribLocation"));
+    glUniform1f = reinterpret_cast<glUniform1fPtrt *>(wglGetProcAddress("glUniform1f"));
+    glUniform2f = reinterpret_cast<glUniform2fPtrt *>(wglGetProcAddress("glUniform2f"));
+    glUniform3f = reinterpret_cast<glUniform3fPtrt *>(wglGetProcAddress("glUniform3f"));
+    glUniform4f = reinterpret_cast<glUniform4fPtrt *>(wglGetProcAddress("glUniform4f"));
+    glUniform2fv = reinterpret_cast<glUniform2fvPtrt *>(wglGetProcAddress("glUniform2fv"));
+    glUniform3fv = reinterpret_cast<glUniform3fvPtrt *>(wglGetProcAddress("glUniform3fv"));
+    glUniform1i = reinterpret_cast<glUniform1iPtrt *>(wglGetProcAddress("glUniform1i"));
+    glUniform2i = reinterpret_cast<glUniform2iPtrt *>(wglGetProcAddress("glUniform2i"));
+    glUniform3i = reinterpret_cast<glUniform3iPtrt *>(wglGetProcAddress("glUniform3i"));
+    glUniform4i = reinterpret_cast<glUniform4iPtrt *>(wglGetProcAddress("glUniform4i"));
+    glUniformMatrix4fv = reinterpret_cast<glUniformMatrix4fvPtrt *>(wglGetProcAddress("glUniformMatrix4fv"));
+    glGetUniformLocation = reinterpret_cast<glGetUniformLocationPtrt *>(wglGetProcAddress("glGetUniformLocation"));
+    glCreateShader = reinterpret_cast<glCreateShaderPtrt *>(wglGetProcAddress("glCreateShader"));
+    glShaderSource = reinterpret_cast<glShaderSourcePtrt *>(wglGetProcAddress("glShaderSource"));
+    glGetShaderiv = reinterpret_cast<glGetShaderivPtrt *>(wglGetProcAddress("glGetShaderiv"));
+    glGetShaderInfoLog = reinterpret_cast<glGetShaderInfoLogPtrt *>(wglGetProcAddress("glGetShaderInfoLog"));
+}
 
+HGLRC glInit(HDC hdc, const int32_t major, const int32_t minor) {
     const int32_t pixelFormatAttributes[] = {
         WGL_DRAW_TO_WINDOW_ARB,     1,
         WGL_SUPPORT_OPENGL_ARB,     1,
@@ -116,7 +158,7 @@ HGLRC glInit(HDC hdc, int32_t major, int32_t minor) {
         WGL_CONTEXT_MAJOR_VERSION_ARB, major,
         WGL_CONTEXT_MINOR_VERSION_ARB, minor,
         WGL_CONTEXT_PROFILE_MASK_ARB,  WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-        0,
+        0
     };
 
     HGLRC glContext = wglCreateContextAttribsARB(hdc, nullptr, glAttribs);
