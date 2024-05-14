@@ -27,15 +27,15 @@ struct Matrix
     template<typename... VectorT>
     requires(((VectorT::size == COLUMNS) && ...) && sizeof...(VectorT) == ROWS && ((std::is_same_v<typename VectorT::type, T>) && ...))
     explicit Matrix(const VectorT&... vecs) noexcept {
-        m_colums = { vecs... };
+        m_values = { vecs... };
     }
 
     Vector<T, COLUMNS>& operator[](const size_t index) {
-        return m_colums[index];
+        return m_values[index];
     }
 
 protected:
-    std::array<Vector<T, COLUMNS>, ROWS> m_colums {};
+    std::array<Vector<T, COLUMNS>, ROWS> m_values {};
 };
 
 template<typename T>
