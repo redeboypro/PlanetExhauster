@@ -5,6 +5,7 @@
 #ifndef GLAPI_H
 #define GLAPI_H
 
+#include <array>
 #include <cstdint>
 #include <windows.h>
 #include "GL/gl.h"
@@ -30,8 +31,18 @@
 #define WGL_FULL_ACCELERATION_ARB                 0x2027
 #define WGL_TYPE_RGBA_ARB                         0x202B
 
+typedef enum : GLuint {
+    GL_STATIC_DRAW          =                     0x88E0,
+    GL_STATIC_READ          =                     0x88E6,
+    GL_STATIC_COPY          =                     0x88E6,
+    GL_DYNAMIC_DRAW         =                     0x88E8,
+    GL_DYNAMIC_READ         =                     0x88E9,
+    GL_DYNAMIC_COPY         =                     0x88EA
+} GLenum_m;
+
 #define GLdataptr void*
 typedef ptrdiff_t GLsizeiptr;
+typedef ptrdiff_t GLintptr;
 typedef char GLchar;
 
 using wglCreateContextAttribsARBPtrt = HGLRC WINAPI(
@@ -58,6 +69,11 @@ using glBufferDataPtrt = void WINAPI(
     GLsizeiptr size,
     const GLdataptr data,
     GLenum usage);
+using glBufferSubDataPtrt = void WINAPI(
+    GLenum target,
+    GLintptr offset,
+    GLsizeiptr size,
+    const GLdataptr data);
 using glEnableVertexAttribArrayPtrt = void WINAPI(GLuint index);
 using glDisableVertexAttribArrayPtrt = void WINAPI(GLuint index);
 using glVertexAttribPointerPtrt = void WINAPI(
@@ -135,6 +151,7 @@ inline glGenBuffersPtrt* glGenBuffers;
 inline glDeleteBuffersPtrt* glDeleteBuffers;
 inline glBindBufferPtrt* glBindBuffer;
 inline glBufferDataPtrt* glBufferData;
+inline glBufferSubDataPtrt* glBufferSubData;
 inline glEnableVertexAttribArrayPtrt* glEnableVertexAttribArray;
 inline glDisableVertexAttribArrayPtrt* glDisableVertexAttribArray;
 inline glVertexAttribPointerPtrt* glVertexAttribPointer;
@@ -167,5 +184,48 @@ inline glGetShaderInfoLogPtrt* glGetShaderInfoLog;
 void glInitExtensions();
 void glInitFeatures();
 HGLRC glInit(HDC hdc, int32_t major, int32_t minor);
+GLuint glGenBuffer();
+
+template<typename T>
+class GLBO {
+    GLuint m_id;
+    GLenum m_bufferType;
+    GLenum_m m_bufferUsage;
+    bool m_destroyed = false;
+public:
+    GLBO(GLenum bufferType, GLenum_m bufferUsage);
+    ~GLBO();
+
+    void destroy();
+
+    using type = T;
+
+    void bind() const;
+    void unbind() const;
+
+    void store(T* data, GLsizei size);
+    void update(T* data, GLintptr offset, GLsizei size);
+
+    void update(T* data, GLsizei size);
+
+    static void attribPtr(GLuint attribLocation, GLint size, GLenum ptrType = GL_FLOAT, GLboolean normalized = false, GLint stride = 0);
+};
+
+template<typename... BUFFOBJ_T>
+class VAO {
+    GLuint m_id = 0;
+    std::array<GLBO<BUFFOBJ_T>, sizeof...(BUFFOBJ_T)> m_buffers {};
+public:
+    explicit VAO(GLenum_m bufferUsage, GLenum... bufferType);
+    ~VAO();
+
+    static constexpr size_t size = sizeof...(BUFFOBJ_T);
+
+    GLBO<BUFFOBJ_T>& operator[](const size_t& id){
+        return m_buffers[id];
+    }
+
+    void bind() const;
+};
 
 #endif //GLAPI_H

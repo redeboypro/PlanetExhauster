@@ -251,6 +251,9 @@ PlanetExhauster_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 PlanetExhauster_SOURCE_DIR:STATIC=C:/Users/redeb/CLionProjects/PlanetExhauster
 
+//The directory containing a CMake configuration file for glm.
+glm_DIR:PATH=glm_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

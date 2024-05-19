@@ -94,6 +94,7 @@ void glInitFeatures() {
     glDeleteBuffers = reinterpret_cast<glDeleteBuffersPtrt *>(wglGetProcAddress("glDeleteBuffers"));
     glBindBuffer = reinterpret_cast<glBindBufferPtrt *>(wglGetProcAddress("glBindBuffer"));
     glBufferData = reinterpret_cast<glBufferDataPtrt *>(wglGetProcAddress("glBufferData"));
+    glBufferSubData = reinterpret_cast<glBufferSubDataPtrt *>(wglGetProcAddress("glBufferSubData"));
     glEnableVertexAttribArray = reinterpret_cast<glEnableVertexAttribArrayPtrt *>(wglGetProcAddress(
         "glEnableVertexAttribArray"));
     glDisableVertexAttribArray = reinterpret_cast<glDisableVertexAttribArrayPtrt *>(wglGetProcAddress(
@@ -173,4 +174,80 @@ HGLRC glInit(HDC hdc, const int32_t major, const int32_t minor) {
     }
 
     return glContext;
+}
+
+GLuint glGenBuffer() {
+    GLuint bufferId;
+    glGenBuffers(1, &bufferId);
+    return bufferId;
+}
+
+template<typename T>
+GLBO<T>::GLBO(GLenum bufferType, GLenum_m bufferUsage):
+m_id(glGenBuffer()),
+m_bufferType(bufferType),
+m_bufferUsage(bufferUsage) {}
+
+template<typename T>
+GLBO<T>::~GLBO() {
+    if (!m_destroyed)
+        destroy();
+}
+
+template<typename T>
+void GLBO<T>::destroy() {
+    glDeleteBuffers(1, &m_id);
+    m_destroyed = true;
+}
+
+template<typename T>
+void GLBO<T>::bind() const {
+    glBindBuffer(m_bufferType, m_id);
+}
+
+template<typename T>
+void GLBO<T>::unbind() const {
+    glBindBuffer(m_bufferType, 0);
+}
+
+template<typename T>
+void GLBO<T>::store(T* data, GLsizei size) {
+    glBufferData(m_bufferType, size, data, m_bufferUsage);
+}
+
+template<typename T>
+void GLBO<T>::update(T* data, GLintptr offset, GLsizei size) {
+    glBufferSubData(m_bufferType, offset, size, data);
+}
+
+template<typename T>
+void GLBO<T>::update(T *data, GLsizei size) {
+    update(data, nullptr, size);
+}
+
+template<typename ... VBOT>
+::VAO<VBOT...>::VAO(GLenum_m bufferUsage, GLenum... bufferType) {
+    glGenVertexArrays(1, &m_id);
+    (m_buffers.emplace_back(GLBO<VBOT>(bufferType, bufferUsage)), ...);
+}
+
+template<typename ... VBOT>
+VAO<VBOT...>::~VAO() {
+    bind();
+    for (GLBO<VBOT> & buffer: m_buffers) {
+        buffer.destroy();
+    }
+
+    glDeleteVertexArrays(1, &m_id);
+    glBindVertexArray(0);
+}
+
+template<typename ...VBOT>
+void VAO<VBOT...>::bind() const {
+    glBindVertexArray(m_id);
+}
+
+template<typename T>
+void GLBO<T>::attribPtr(GLuint attribLocation, GLint size, GLenum ptrType, GLboolean normalized, GLint stride) {
+    glVertexAttribPointer(attribLocation, size, ptrType, normalized, stride, nullptr);
 }

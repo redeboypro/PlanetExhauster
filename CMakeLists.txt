@@ -8,11 +8,11 @@ add_executable(PlanetExhauster main.cpp
         GLAPI.h
         Window.cpp
         Window.h
-        Math/Vector.h
-        Math/Matrix.h
-        Math/LinearAlg.cpp
-        Math/LinearAlg.h
-        Math/MathDetail.h
+        Mesh.cpp
+        Mesh.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)
+
+include_directories("D:\\glm-1.0.1-light\\glm")
+target_link_libraries(PlanetExhauster glm)
