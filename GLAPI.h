@@ -5,8 +5,8 @@
 #ifndef GLAPI_H
 #define GLAPI_H
 
-#include <array>
 #include <cstdint>
+#include <vector>
 #include <windows.h>
 #include "GL/gl.h"
 
@@ -32,13 +32,15 @@
 #define WGL_TYPE_RGBA_ARB                         0x202B
 
 typedef enum : GLuint {
+    GL_ARRAY_BUFFER         =                     34962,
+    GL_ELEMENT_ARRAY_BUFFER =                     34963,
     GL_STATIC_DRAW          =                     0x88E0,
     GL_STATIC_READ          =                     0x88E6,
     GL_STATIC_COPY          =                     0x88E6,
     GL_DYNAMIC_DRAW         =                     0x88E8,
     GL_DYNAMIC_READ         =                     0x88E9,
     GL_DYNAMIC_COPY         =                     0x88EA
-} GLenum_m;
+} MGLenum;
 
 #define GLdataptr void*
 typedef ptrdiff_t GLsizeiptr;
@@ -186,46 +188,34 @@ void glInitFeatures();
 HGLRC glInit(HDC hdc, int32_t major, int32_t minor);
 GLuint glGenBuffer();
 
-template<typename T>
-class GLBO {
+template<MGLenum BUFFER_TYPE>
+class BufferObject final {
     GLuint m_id;
-    GLenum m_bufferType;
-    GLenum_m m_bufferUsage;
-    bool m_destroyed = false;
+    bool m_stored = false;
 public:
-    GLBO(GLenum bufferType, GLenum_m bufferUsage);
-    ~GLBO();
+    explicit BufferObject();
+    ~BufferObject();
 
-    void destroy();
+    static constexpr MGLenum type = BUFFER_TYPE;
 
-    using type = T;
-
+    void destroy() const;
     void bind() const;
-    void unbind() const;
 
-    void store(T* data, GLsizei size);
-    void update(T* data, GLintptr offset, GLsizei size);
-
-    void update(T* data, GLsizei size);
-
-    static void attribPtr(GLuint attribLocation, GLint size, GLenum ptrType = GL_FLOAT, GLboolean normalized = false, GLint stride = 0);
+    template<typename T>
+    void store(T* data, GLsizei bufferSize);
 };
 
-template<typename... BUFFOBJ_T>
-class VAO {
+using VBO = BufferObject<GL_ARRAY_BUFFER>;
+using EBO = BufferObject<GL_ELEMENT_ARRAY_BUFFER>;
+
+class VAO final {
     GLuint m_id = 0;
-    std::array<GLBO<BUFFOBJ_T>, sizeof...(BUFFOBJ_T)> m_buffers {};
 public:
-    explicit VAO(GLenum_m bufferUsage, GLenum... bufferType);
+    VAO();
     ~VAO();
 
-    static constexpr size_t size = sizeof...(BUFFOBJ_T);
-
-    GLBO<BUFFOBJ_T>& operator[](const size_t& id){
-        return m_buffers[id];
-    }
-
     void bind() const;
+    void destroy() const;
 };
 
 #endif //GLAPI_H

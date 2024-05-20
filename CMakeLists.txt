@@ -8,8 +8,9 @@ add_executable(PlanetExhauster main.cpp
         GLAPI.h
         Window.cpp
         Window.h
-        Mesh.cpp
         Mesh.h
+        Texture.h
+        Assert.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)

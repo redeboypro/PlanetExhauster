@@ -1,6 +1,6 @@
 # ninja log v5
 22	1979	7373251901458830	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	562fecf304e2698a
 40	1470	7373251896374211	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	476042eaa8c254e
-7	334	7375743796767381	build.ninja	7d1c9fed34f5288c
+7	334	7379332533901148	build.ninja	7d1c9fed34f5288c
 43	2000	7373251901669031	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	eef748312d8b046
 2000	2160	7373251903220438	PlanetExhauster.exe	40681df610b6d835

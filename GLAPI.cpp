@@ -182,72 +182,50 @@ GLuint glGenBuffer() {
     return bufferId;
 }
 
-template<typename T>
-GLBO<T>::GLBO(GLenum bufferType, GLenum_m bufferUsage):
-m_id(glGenBuffer()),
-m_bufferType(bufferType),
-m_bufferUsage(bufferUsage) {}
-
-template<typename T>
-GLBO<T>::~GLBO() {
-    if (!m_destroyed)
-        destroy();
-}
-
-template<typename T>
-void GLBO<T>::destroy() {
-    glDeleteBuffers(1, &m_id);
-    m_destroyed = true;
-}
-
-template<typename T>
-void GLBO<T>::bind() const {
-    glBindBuffer(m_bufferType, m_id);
-}
-
-template<typename T>
-void GLBO<T>::unbind() const {
-    glBindBuffer(m_bufferType, 0);
-}
-
-template<typename T>
-void GLBO<T>::store(T* data, GLsizei size) {
-    glBufferData(m_bufferType, size, data, m_bufferUsage);
-}
-
-template<typename T>
-void GLBO<T>::update(T* data, GLintptr offset, GLsizei size) {
-    glBufferSubData(m_bufferType, offset, size, data);
-}
-
-template<typename T>
-void GLBO<T>::update(T *data, GLsizei size) {
-    update(data, nullptr, size);
-}
-
-template<typename ... VBOT>
-::VAO<VBOT...>::VAO(GLenum_m bufferUsage, GLenum... bufferType) {
+VAO::VAO() {
     glGenVertexArrays(1, &m_id);
-    (m_buffers.emplace_back(GLBO<VBOT>(bufferType, bufferUsage)), ...);
 }
 
-template<typename ... VBOT>
-VAO<VBOT...>::~VAO() {
-    bind();
-    for (GLBO<VBOT> & buffer: m_buffers) {
-        buffer.destroy();
-    }
-
-    glDeleteVertexArrays(1, &m_id);
-    glBindVertexArray(0);
+VAO::~VAO() {
+    destroy();
 }
 
-template<typename ...VBOT>
-void VAO<VBOT...>::bind() const {
+void VAO::bind() const {
     glBindVertexArray(m_id);
 }
 
-template<typename T>
-void GLBO<T>::attribPtr(GLuint attribLocation, GLint size, GLenum ptrType, GLboolean normalized, GLint stride) {
-    glVertexAttribPointer(attribLocation, size, ptrType, normalized, stride, nullptr);
+void VAO::destroy() const {
+    glDeleteVertexArrays(1, &m_id);
 }
+
+template<MGLenum BUFFER_TYPE>
+BufferObject<BUFFER_TYPE>::BufferObject() :
+m_id(glGenBuffer()) {}
+
+template<MGLenum BUFFER_TYPE>
+BufferObject<BUFFER_TYPE>::~BufferObject() {
+    destroy();
+}
+
+template<MGLenum BUFFER_TYPE>
+void BufferObject<BUFFER_TYPE>::destroy() const {
+    glDeleteBuffers(1, &m_id);
+}
+
+template<MGLenum BUFFER_TYPE>
+void BufferObject<BUFFER_TYPE>::bind() const {
+    glBindBuffer(BUFFER_TYPE, m_id);
+}
+
+template<MGLenum BUFFER_TYPE>
+template<typename T>
+void BufferObject<BUFFER_TYPE>::store(T* data, const GLsizei bufferSize) {
+    bind();
+    if (!m_stored) {
+        glBufferData(BUFFER_TYPE, bufferSize * sizeof(T), data, GL_STATIC_DRAW);
+        m_stored = true;
+    } else {
+        glBufferSubData(BUFFER_TYPE, 0, bufferSize, data);
+    }
+}
+

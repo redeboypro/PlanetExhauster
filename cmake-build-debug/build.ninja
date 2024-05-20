@@ -70,13 +70,6 @@ build CMakeFiles/PlanetExhauster.dir/Window.cpp.obj: CXX_COMPILER__PlanetExhaust
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir
 
-build CMakeFiles/PlanetExhauster.dir/Mesh.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Debug C$:/Users/redeb/CLionProjects/PlanetExhauster/Mesh.cpp || cmake_object_order_depends_target_PlanetExhauster
-  DEP_FILE = CMakeFiles\PlanetExhauster.dir\Mesh.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
-  INCLUDES = -ID:/glm-1.0.1-light/glm
-  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
-  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PlanetExhauster
@@ -85,7 +78,7 @@ build CMakeFiles/PlanetExhauster.dir/Mesh.cpp.obj: CXX_COMPILER__PlanetExhauster
 #############################################
 # Link the executable PlanetExhauster.exe
 
-build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Debug CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj CMakeFiles/PlanetExhauster.dir/Mesh.cpp.obj
+build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Debug CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lopengl32  -lglm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
