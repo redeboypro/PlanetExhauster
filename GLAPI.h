@@ -32,6 +32,8 @@
 #define WGL_TYPE_RGBA_ARB                         0x202B
 
 typedef enum : GLuint {
+    GL_VERTEX_SHADER        =                     0x8B31,
+    GL_FRAGMENT_SHADER      =                     0x8B30,
     GL_ARRAY_BUFFER         =                     34962,
     GL_ELEMENT_ARRAY_BUFFER =                     34963,
     GL_STATIC_DRAW          =                     0x88E0,
@@ -59,7 +61,7 @@ using wglChoosePixelFormatARBPtrt = bool WINAPI(
     int32_t* piFormats,
     uint32_t *nNumFormats);
 using wglSwapIntervalEXTPtrt = int32_t WINAPI(int32_t interval);
-using glActiveTexturePtrt = void WINAPI(GLenum texture);
+using glActiveTexturePtrt = void WINAPI(GLuint texture);
 using glGenVertexArraysPtrt = void WINAPI(GLsizei n, GLuint* arrays);
 using glDeleteVertexArraysPtrt = void WINAPI(GLsizei n, const GLuint *arrays);
 using glBindVertexArrayPtrt = void WINAPI(GLuint array);
@@ -135,6 +137,7 @@ using glShaderSourcePtrt = void WINAPI(
     GLsizei count,
     const GLchar** string,
     const GLint* length);
+using glCompileShaderPtrt = void WINAPI(GLuint shader);
 using glGetShaderivPtrt = void WINAPI(GLuint shader, GLenum pname, GLint *params);
 using glGetShaderInfoLogPtrt = void WINAPI(
     GLuint shader,
@@ -180,6 +183,7 @@ inline glUniformMatrix4fvPtrt* glUniformMatrix4fv;
 inline glGetUniformLocationPtrt* glGetUniformLocation;
 inline glCreateShaderPtrt* glCreateShader;
 inline glShaderSourcePtrt* glShaderSource;
+inline glCompileShaderPtrt* glCompileShader;
 inline glGetShaderivPtrt* glGetShaderiv;
 inline glGetShaderInfoLogPtrt* glGetShaderInfoLog;
 

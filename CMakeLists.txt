@@ -11,6 +11,7 @@ add_executable(PlanetExhauster main.cpp
         Mesh.h
         Texture.h
         Assert.h
+        Shader.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)

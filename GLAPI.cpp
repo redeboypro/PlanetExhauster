@@ -123,6 +123,7 @@ void glInitFeatures() {
     glGetUniformLocation = reinterpret_cast<glGetUniformLocationPtrt *>(wglGetProcAddress("glGetUniformLocation"));
     glCreateShader = reinterpret_cast<glCreateShaderPtrt *>(wglGetProcAddress("glCreateShader"));
     glShaderSource = reinterpret_cast<glShaderSourcePtrt *>(wglGetProcAddress("glShaderSource"));
+    glCompileShader = reinterpret_cast<glCompileShaderPtrt *>(wglGetProcAddress("glCompileShader"));
     glGetShaderiv = reinterpret_cast<glGetShaderivPtrt *>(wglGetProcAddress("glGetShaderiv"));
     glGetShaderInfoLog = reinterpret_cast<glGetShaderInfoLogPtrt *>(wglGetProcAddress("glGetShaderInfoLog"));
 }
