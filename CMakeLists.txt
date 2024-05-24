@@ -12,9 +12,12 @@ add_executable(PlanetExhauster main.cpp
         Texture.h
         Assert.h
         Shader.h
+        World/Entity.cpp
+        World/Entity.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)
 
-include_directories("D:\\glm-1.0.1-light\\glm")
-target_link_libraries(PlanetExhauster glm)
+include_directories(D:/glm-1.0.1-light/glm)
+
+target_link_libraries(PlanetExhauster -static)

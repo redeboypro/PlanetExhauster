@@ -17,7 +17,7 @@ LRESULT CALLBACK WndMsgCb(HWND wndHandle, uint32_t msg, WPARAM wParam, LPARAM lP
             return DefWindowProc(wndHandle, msg, wParam, lParam);
     }
 
-    return NULL;
+    return 0;
 }
 
 Window::Window(
@@ -61,7 +61,7 @@ m_updPtrt(updPtrt) {
     AdjustWindowRect(&wndRect, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, false);
 
     m_wndHandle = CreateWindowEx(
-        NULL,
+        0,
         MAKEINTATOM(wndClassRegResult),
         wndTitle,
         WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT,
@@ -97,8 +97,8 @@ void Window::run() {
         if (PeekMessage(
             &msg,
             nullptr,
-            NULL,
-            NULL,
+            0,
+            0,
             PM_REMOVE)) {
             if (msg.message != WM_QUIT) {
                 TranslateMessage(&msg);

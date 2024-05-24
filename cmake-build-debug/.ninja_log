@@ -1,6 +1,21 @@
 # ninja log v5
-22	1979	7373251901458830	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	562fecf304e2698a
-40	1470	7373251896374211	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	476042eaa8c254e
-7	334	7380122896081583	build.ninja	7d1c9fed34f5288c
-43	2000	7373251901669031	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	eef748312d8b046
+12	1981	7380569300969649	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+10	219	7380576086725014	build.ninja	7d1c9fed34f5288c
+15	1351	7380569294663927	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	a07edad0f4d25aa0
+17	1868	7380569299838617	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	fada04566ac1fe02
 2000	2160	7373251903220438	PlanetExhauster.exe	40681df610b6d835
+2	213	7380576086725014	build.ninja	7d1c9fed34f5288c
+5	1887	7380663914195770	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+12	1865	7380664121431902	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+35	1495	7380770126146843	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	a07edad0f4d25aa0
+38	2020	7380770131401617	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	fada04566ac1fe02
+16	2130	7380770132502617	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+16	1375	7380770870862420	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	a07edad0f4d25aa0
+18	1886	7380770875977066	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	fada04566ac1fe02
+12	2026	7380770877368328	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+16	1488	7380771294540135	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	a07edad0f4d25aa0
+19	2077	7380771300415464	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	fada04566ac1fe02
+12	2210	7380771301716646	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+2210	2298	7380771302607455	PlanetExhauster.exe	40681df610b6d835
+14	1845	7380772377379651	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	cc409c0006c6b6d6
+1846	1932	7380772378260452	PlanetExhauster.exe	40681df610b6d835

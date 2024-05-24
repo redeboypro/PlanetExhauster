@@ -197,16 +197,31 @@ class BufferObject final {
     GLuint m_id;
     bool m_stored = false;
 public:
-    explicit BufferObject();
-    ~BufferObject();
+    BufferObject() : m_id(glGenBuffer()) {}
+    ~BufferObject() {
+        destroy();
+    }
 
     static constexpr MGLenum type = BUFFER_TYPE;
 
-    void destroy() const;
-    void bind() const;
+    void destroy() const {
+        glDeleteBuffers(1, &m_id);
+    }
+
+    void bind() const {
+        glBindBuffer(BUFFER_TYPE, m_id);
+    }
 
     template<typename T>
-    void store(T* data, GLsizei bufferSize);
+    void store(T* data, const GLsizei bufferSize) {
+        bind();
+        if (!m_stored) {
+            glBufferData(BUFFER_TYPE, bufferSize * sizeof(T), data, GL_STATIC_DRAW);
+            m_stored = true;
+        } else {
+            glBufferSubData(BUFFER_TYPE, 0, bufferSize, data);
+        }
+    }
 };
 
 using VBO = BufferObject<GL_ARRAY_BUFFER>;

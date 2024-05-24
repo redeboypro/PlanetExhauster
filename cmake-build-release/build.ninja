@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: PlanetExhauster
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Debug
+CONFIGURATION = Release
 # =============================================================================
 # Include auxiliary files.
 
@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release/
 # =============================================================================
 # Object build statements for EXECUTABLE target PlanetExhauster
 
@@ -49,26 +49,33 @@ cmake_ninja_workdir = C$:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-
 
 build cmake_object_order_depends_target_PlanetExhauster: phony || CMakeFiles/PlanetExhauster.dir
 
-build CMakeFiles/PlanetExhauster.dir/main.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Debug C$:/Users/redeb/CLionProjects/PlanetExhauster/main.cpp || cmake_object_order_depends_target_PlanetExhauster
+build CMakeFiles/PlanetExhauster.dir/main.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/main.cpp || cmake_object_order_depends_target_PlanetExhauster
   DEP_FILE = CMakeFiles\PlanetExhauster.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -ID:/glm-1.0.1-light/glm
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir
 
-build CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Debug C$:/Users/redeb/CLionProjects/PlanetExhauster/GLAPI.cpp || cmake_object_order_depends_target_PlanetExhauster
+build CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/GLAPI.cpp || cmake_object_order_depends_target_PlanetExhauster
   DEP_FILE = CMakeFiles\PlanetExhauster.dir\GLAPI.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -ID:/glm-1.0.1-light/glm
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir
 
-build CMakeFiles/PlanetExhauster.dir/Window.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Debug C$:/Users/redeb/CLionProjects/PlanetExhauster/Window.cpp || cmake_object_order_depends_target_PlanetExhauster
+build CMakeFiles/PlanetExhauster.dir/Window.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/Window.cpp || cmake_object_order_depends_target_PlanetExhauster
   DEP_FILE = CMakeFiles\PlanetExhauster.dir\Window.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -ID:/glm-1.0.1-light/glm
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir
+
+build CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/Entity.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\Entity.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World
 
 
 # =============================================================================
@@ -78,9 +85,9 @@ build CMakeFiles/PlanetExhauster.dir/Window.cpp.obj: CXX_COMPILER__PlanetExhaust
 #############################################
 # Link the executable PlanetExhauster.exe
 
-build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Debug CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lopengl32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Release CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = -lopengl32  -static  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -93,7 +100,7 @@ build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Debug CMakeFil
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-release && "C:\Program Files\JetBrains\CLion 2024.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -104,7 +111,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\redeb\CLionProjects\PlanetExhauster -BC:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-release && "C:\Program Files\JetBrains\CLion 2024.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\redeb\CLionProjects\PlanetExhauster -BC:\Users\redeb\CLionProjects\PlanetExhauster\cmake-build-release"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -122,7 +129,7 @@ build PlanetExhauster: phony PlanetExhauster.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-debug
+# Folder: C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release
 
 build all: phony PlanetExhauster.exe
 

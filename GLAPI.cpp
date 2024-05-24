@@ -199,34 +199,3 @@ void VAO::destroy() const {
     glDeleteVertexArrays(1, &m_id);
 }
 
-template<MGLenum BUFFER_TYPE>
-BufferObject<BUFFER_TYPE>::BufferObject() :
-m_id(glGenBuffer()) {}
-
-template<MGLenum BUFFER_TYPE>
-BufferObject<BUFFER_TYPE>::~BufferObject() {
-    destroy();
-}
-
-template<MGLenum BUFFER_TYPE>
-void BufferObject<BUFFER_TYPE>::destroy() const {
-    glDeleteBuffers(1, &m_id);
-}
-
-template<MGLenum BUFFER_TYPE>
-void BufferObject<BUFFER_TYPE>::bind() const {
-    glBindBuffer(BUFFER_TYPE, m_id);
-}
-
-template<MGLenum BUFFER_TYPE>
-template<typename T>
-void BufferObject<BUFFER_TYPE>::store(T* data, const GLsizei bufferSize) {
-    bind();
-    if (!m_stored) {
-        glBufferData(BUFFER_TYPE, bufferSize * sizeof(T), data, GL_STATIC_DRAW);
-        m_stored = true;
-    } else {
-        glBufferSubData(BUFFER_TYPE, 0, bufferSize, data);
-    }
-}
-

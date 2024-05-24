@@ -24,7 +24,6 @@ class Shader final {
       if (const auto it = m_uniforms.find(uniformName); it != m_uniforms.end()) {
          return it->second;
       }
-
       return m_uniforms[uniformName] = glGetUniformLocation(m_programId, uniformName.c_str());
    }
 public:
@@ -37,9 +36,7 @@ public:
       glAttachShader(m_programId, m_vertexShaderId);
       glAttachShader(m_programId, m_fragmentShaderId);
 
-      for (ShaderAttrib attrib : attribs) {
-         bindAttrib(attrib.location, attrib.name);
-      }
+      (bindAttrib(attribs.location, attribs.name), ...);
 
       glLinkProgram(m_programId);
       glValidateProgram(m_programId);
