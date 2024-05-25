@@ -77,6 +77,41 @@ build CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj: CXX_COMPILER__PlanetE
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World
 
+build CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/World.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\World.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World
+
+build CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/Physics/Collider.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\Physics\Collider.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World\Physics
+
+build CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/Physics/GJK.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\Physics\GJK.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World\Physics
+
+build CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/Physics/Simplex.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\Physics\Simplex.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World\Physics
+
+build CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj: CXX_COMPILER__PlanetExhauster_unscanned_Release C$:/Users/redeb/CLionProjects/PlanetExhauster/World/Physics/EPA.cpp || cmake_object_order_depends_target_PlanetExhauster
+  DEP_FILE = CMakeFiles\PlanetExhauster.dir\World\Physics\EPA.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -ID:/glm-1.0.1-light/glm
+  OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
+  OBJECT_FILE_DIR = CMakeFiles\PlanetExhauster.dir\World\Physics
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PlanetExhauster
@@ -85,7 +120,7 @@ build CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj: CXX_COMPILER__PlanetE
 #############################################
 # Link the executable PlanetExhauster.exe
 
-build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Release CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj
+build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Release CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj
   FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = -lopengl32  -static  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir

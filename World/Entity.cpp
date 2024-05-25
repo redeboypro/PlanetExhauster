@@ -9,7 +9,8 @@ void Entity::update(bool isLocal) { // NOLINT(*-no-recursion)
     glm::vec4 tmp_perspective;
 
     const glm::mat4 parentMatrix = m_parent != nullptr ?
-        m_parent->m_worldMatrix : glm::mat4 ID_MAT4X4;
+        m_parent->m_isCamera ? m_parent->m_viewMatrix :m_parent->m_worldMatrix :
+    glm::mat4 ID_MAT4X4;
 
     while (true) {
         if (isLocal) {
@@ -21,6 +22,8 @@ void Entity::update(bool isLocal) { // NOLINT(*-no-recursion)
             decompose(m_worldMatrix, m_worldScale, m_worldOrientation, m_worldPosition,
                 tmp_skew, tmp_perspective);
             m_worldOrientation = conjugate(m_worldOrientation);
+
+            m_viewMatrix = lookAt(m_worldPosition, m_worldPosition + forward(), up());
 
             for (const auto child : m_children) {
                 child->update(true);
@@ -40,17 +43,17 @@ void Entity::update(bool isLocal) { // NOLINT(*-no-recursion)
     }
 }
 
-Entity::Entity() {
+Entity::Entity(const bool isCamera) : m_isCamera(isCamera) {
     update(true);
 }
 
 Entity::~Entity() {
-    for (const auto& childIndex : m_children) {
-        childIndex->setParent(nullptr, true);
+    for (const auto child : m_children) {
+        child->setParent(nullptr, true);
     }
 }
 
-void Entity::setParent(Entity* parent, bool worldTransformStays) { // NOLINT(*-no-recursion)
+void Entity::setParent(Entity* parent, const bool worldTransformStays) { // NOLINT(*-no-recursion)
     if (m_parent != parent) {
         m_parent->removeChild(this);
     }

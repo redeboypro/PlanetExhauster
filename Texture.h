@@ -32,14 +32,14 @@ public:
     TextureRgba(
         const int32_t width,
         const int32_t height,
-        auto... parameters) :
+        auto... param) :
     width(width),
     height(height) {
         glGenTextures(1, &m_id);
 
         bind();
 
-        (glTexParameteri(GL_TEXTURE_2D, parameters.name, parameters.mode), ...);
+        (glTexParameteri(GL_TEXTURE_2D, param.name, param.mode), ...);
 
         glTexImage2D(
             GL_TEXTURE_2D,
@@ -56,8 +56,8 @@ public:
         const int32_t width,
         const int32_t height,
         const std::vector<uint8_t>& data,
-        TexParameter... parameters) :
-    TextureRgba(width, height, parameters...) {
+        auto... param) :
+    TextureRgba(width, height, param...) {
         m_buffer = data;
         apply();
     }

@@ -14,6 +14,17 @@ add_executable(PlanetExhauster main.cpp
         Shader.h
         World/Entity.cpp
         World/Entity.h
+        World/World.cpp
+        World/World.h
+        World/Physics/Collider.cpp
+        World/Physics/Collider.h
+        World/Physics/GJK.cpp
+        World/Physics/GJK.h
+        World/Physics/Simplex.cpp
+        World/Physics/Simplex.h
+        World/Physics/EPA.cpp
+        World/Physics/EPA.h
+        World/Physics/Collision.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)

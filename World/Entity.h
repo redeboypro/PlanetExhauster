@@ -5,8 +5,14 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 #include <vector>
+
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <gtx/quaternion.hpp>
 #include <gtx/matrix_decompose.hpp>
+
+#include "../Mesh.h"
+#include "../Texture.h"
 
 //RIGHT
 constexpr static glm::vec3 unit_x = {1, 0, 0};
@@ -21,7 +27,7 @@ constexpr static glm::vec3 unit_z = {0, 0, 1};
 #define ID_QUAT {1, 0, 0, 0}
 #define ID_MAT4X4 {1}
 
-class Entity {
+class Entity final {
     std::vector<Entity*> m_children;
     Entity* m_parent = nullptr;
 
@@ -35,12 +41,34 @@ class Entity {
 
     glm::mat4 m_localMatrix ID_MAT4X4;
     glm::mat4 m_worldMatrix ID_MAT4X4;
+    glm::mat4 m_viewMatrix ID_MAT4X4;
+
+    bool m_isCamera;
+
+    Mesh* m_mesh = nullptr;
+    TextureRgba* m_texture = nullptr;
 
     void update(bool isLocal);
 public:
-    Entity();
+    explicit Entity(bool isCamera);
 
     ~Entity();
+
+    [[nodiscard]] Mesh* getMesh() const {
+        return m_mesh;
+    }
+
+    void setLocalPosition(Mesh* mesh) {
+        m_mesh = mesh;
+    }
+
+    [[nodiscard]] TextureRgba* getTexture() const {
+        return m_texture;
+    }
+
+    void setTexture(TextureRgba* texture) {
+        m_texture = texture;
+    }
 
     [[nodiscard]] glm::vec3 getLocalPosition() const {
         return m_localPosition;
@@ -120,7 +148,19 @@ public:
         return m_parent;
     }
 
-    void setParent(Entity* parent, bool world);
+    [[nodiscard]] glm::mat4 getLocalMatrix() const {
+        return m_localMatrix;
+    }
+
+    [[nodiscard]] glm::mat4 getWorldMatrix() const {
+        return m_worldMatrix;
+    }
+
+    [[nodiscard]] glm::mat4 getViewMatrix() const {
+        return m_viewMatrix;
+    }
+
+    void setParent(Entity* parent, bool worldTransformStays);
 
     void addChild(Entity* child);
     void removeChild(Entity* child);
