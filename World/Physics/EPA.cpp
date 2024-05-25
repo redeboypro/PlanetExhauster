@@ -7,7 +7,7 @@
 
 namespace EPA {
     using namespace GJK;
-    Collision epa(const Simplex &simplex, const Collider &colliderA, const Collider &colliderB) {
+    Collision epa(const Simplex &simplex, const EntityCollision& objA, const EntityCollision& objB) {
         std::vector polytope(simplex.begin(), simplex.end());
         std::vector<size_t> faces = {
             0, 1, 2,
@@ -24,14 +24,14 @@ namespace EPA {
 
         size_t iterationCount = 0;
         while (std::abs(minDistance - FLT_MAX) < std::numeric_limits<float>::epsilon() &&
-            iterationCount++ < colliderA.size() + colliderB.size()) {
+            iterationCount++ < objA.collider->size() + objB.collider->size()) {
             if (minTriangle < 0 or minTriangle >= normals.size()) continue;
 
-            CollisionNormal normal = normals[minTriangle];
-            minDirection = normal.direction;
-            minDistance = normal.distance;
+            const auto [direction, distance] = normals[minTriangle];
+            minDirection = direction;
+            minDistance = distance;
 
-            glm::vec3 support = supportPoint(colliderA, colliderB, minDirection);
+            glm::vec3 support = supportPoint(objA, objB, minDirection);
 
             if (const float sDistance = dot(minDirection, support); std::abs(sDistance - minDistance) > EPS) {
                 minDistance = FLT_MAX;

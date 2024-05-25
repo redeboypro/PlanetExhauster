@@ -9,12 +9,13 @@
 
 #include "Collider.h"
 #include "Collision.h"
+#include "GJK.h"
 #include "Simplex.h"
 
 #define EPS 0.0001F
 
 namespace EPA {
-    Collision epa(const Simplex& simplex, const Collider& colliderA, const Collider& colliderB);
+    Collision epa(const Simplex& simplex, const EntityCollision& objA, const EntityCollision& objB);
     std::vector<CollisionNormal> getFaceNormals(
         const std::vector<glm::vec3> &polytope,
         const std::vector<size_t> &faces,

@@ -8,8 +8,10 @@
 #include <vector>
 #include <detail/func_geometric.inl>
 
+#include "../Entity.h"
+
 struct Collider final {
-    [[nodiscard]] glm::vec3 findFurthestPoint(const glm::vec3& direction) const;
+    [[nodiscard]] glm::vec3 findFurthestPoint(const Entity* entity, const glm::vec3& direction) const;
 
     [[nodiscard]] size_t size() const {
         return m_vertices.size();

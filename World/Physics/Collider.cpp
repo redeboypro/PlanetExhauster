@@ -6,16 +6,17 @@
 
 #include <cfloat>
 
-glm::vec3 Collider::findFurthestPoint(const glm::vec3& direction) const {
+glm::vec3 Collider::findFurthestPoint(const Entity* entity, const glm::vec3& direction) const {
     glm::vec3 maxPoint = m_vertices[m_vertices.size() - 1];
     float maxDistance = -FLT_MAX;
 
     for (const auto& vertex : m_vertices) {
-        if (const float distance = dot(vertex, direction); distance > maxDistance) {
+        auto transformedVertex = entity->getWorldOrientation() * (vertex * entity->getWorldScale());
+        if (const float distance = dot(transformedVertex, direction); distance > maxDistance) {
             maxDistance = distance;
-            maxPoint = vertex;
+            maxPoint = transformedVertex;
         }
     }
 
-    return maxPoint;
+    return maxPoint + entity->getWorldPosition();
 }

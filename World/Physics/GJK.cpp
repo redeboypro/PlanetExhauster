@@ -7,29 +7,31 @@
 #include "Simplex.h"
 
 namespace GJK {
-    glm::vec3 GJK::supportPoint(const Collider &colliderA, const Collider &colliderB, const glm::vec3 &direction) {
-        return colliderA.findFurthestPoint( direction) - colliderB.findFurthestPoint(-direction);
+    glm::vec3 GJK::supportPoint(const EntityCollision& objA, const EntityCollision& objB, const glm::vec3 &direction) {
+        return objA.collider->findFurthestPoint(objA.entity, direction) - objB.collider->findFurthestPoint(objB.entity, -direction);
     }
 
-    bool GJK::gjk(const Collider &colliderA, const Collider &colliderB) {
-        glm::vec3 support = supportPoint(colliderA, colliderB, glm::vec3(1, 0, 0));
-
-        Simplex points;
-        points.push(support);
-
+    bool GJK::gjk(const EntityCollision& objA, const EntityCollision& objB, Simplex& simplex) {
+        glm::vec3 support = supportPoint(objA, objB, glm::vec3(1, 0, 0));
         glm::vec3 direction = -support;
-        while (true) {
-            support = supportPoint(colliderA, colliderB, direction);
+
+        simplex.push(support);
+
+        int32_t iterations = 0;
+        while (iterations++ < objA.collider->size() + objB.collider->size()) {
+            support = supportPoint(objA, objB, direction);
 
             if (dot(support, direction) <= 0) {
                 return false;
             }
 
-            points.push(support);
-            if (nextSimplex(points, direction)) {
+            simplex.push(support);
+            if (nextSimplex(simplex, direction)) {
                 return true;
             }
         }
+
+        return false;
     }
 
     bool GJK::nextSimplex(Simplex &simplex, glm::vec3 &direction) {

@@ -8,6 +8,7 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 
+#include <string>
 #include <gtx/quaternion.hpp>
 #include <gtx/matrix_decompose.hpp>
 
@@ -27,7 +28,11 @@ constexpr static glm::vec3 unit_z = {0, 0, 1};
 #define ID_QUAT {1, 0, 0, 0}
 #define ID_MAT4X4 {1}
 
+#define DEFAULT_TAG "Default"
+
 class Entity final {
+    std::string m_tag = DEFAULT_TAG;
+
     std::vector<Entity*> m_children;
     Entity* m_parent = nullptr;
 
@@ -54,11 +59,19 @@ public:
 
     ~Entity();
 
+    [[nodiscard]] std::string getTag() const {
+        return m_tag;
+    }
+
+    void setTag(const std::string& tag) {
+        m_tag = tag;
+    }
+
     [[nodiscard]] Mesh* getMesh() const {
         return m_mesh;
     }
 
-    void setLocalPosition(Mesh* mesh) {
+    void setMesh(Mesh* mesh) {
         m_mesh = mesh;
     }
 

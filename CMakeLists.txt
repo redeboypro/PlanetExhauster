@@ -25,6 +25,8 @@ add_executable(PlanetExhauster main.cpp
         World/Physics/EPA.cpp
         World/Physics/EPA.h
         World/Physics/Collision.h
+        World/Physics/Rigidbody.cpp
+        World/Physics/Rigidbody.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)
