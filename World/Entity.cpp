@@ -43,7 +43,7 @@ void Entity::update(bool isLocal) { // NOLINT(*-no-recursion)
     }
 }
 
-Entity::Entity(const bool isCamera) : m_isCamera(isCamera) {
+Entity::Entity(const bool isCamera) : m_isCamera(isCamera), m_isActive(true) {
     update(true);
 }
 

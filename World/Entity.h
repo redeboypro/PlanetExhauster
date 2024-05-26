@@ -49,6 +49,7 @@ class Entity final {
     glm::mat4 m_viewMatrix ID_MAT4X4;
 
     bool m_isCamera;
+    bool m_isActive;
 
     Mesh* m_mesh = nullptr;
     TextureRgba* m_texture = nullptr;
@@ -171,6 +172,14 @@ public:
 
     [[nodiscard]] glm::mat4 getViewMatrix() const {
         return m_viewMatrix;
+    }
+
+    [[nodiscard]] bool active() const {
+        return m_isActive;
+    }
+
+    void setActive(const bool activeState) {
+        m_isActive = activeState;
     }
 
     void setParent(Entity* parent, bool worldTransformStays);

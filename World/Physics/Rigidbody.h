@@ -32,6 +32,9 @@ class Rigidbody final {
     float m_fallAcceleration;
 
 public:
+    explicit Rigidbody(const bool isCamera) :
+    Rigidbody(new Entity(isCamera)) {}
+
     explicit Rigidbody(Entity* entity):
     m_entity(entity),
     m_isGrounded(false),
@@ -40,6 +43,10 @@ public:
     m_fallAcceleration(-80.0F),
     isKinematic(true),
     isTrigger(false) {}
+
+    ~Rigidbody() {
+        delete m_entity;
+    }
 
     [[nodiscard]] Entity* getEntity() const {
         return m_entity;
