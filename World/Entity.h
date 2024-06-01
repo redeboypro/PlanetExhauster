@@ -24,9 +24,17 @@ constexpr static glm::vec3 unit_y = {0, 1, 0};
 //FORWARD
 constexpr static glm::vec3 unit_z = {0, 0, 1};
 
-#define ID_VEC {0}
-#define ID_QUAT {1, 0, 0, 0}
+#define ID_COL    {1}
+#define ID_VEC    {0}
+#define ID_VEC1   {1}
+#define ID_QUAT   {1, 0, 0, 0}
 #define ID_MAT4X4 {1}
+
+const std::string glHasTextureUniform = "has_texture";
+const std::string glColorUniform = "color";
+const std::string glViewMatrixUniform = "view_matrix";
+const std::string glModelMatrixUniform = "model_matrix";
+const std::string glProjectionMatrixUniform = "projection_matrix";
 
 #define DEFAULT_TAG "Default"
 
@@ -38,11 +46,11 @@ class Entity final {
 
     glm::vec3 m_localPosition ID_VEC;
     glm::quat m_localOrientation ID_QUAT;
-    glm::vec3 m_localScale ID_VEC;
+    glm::vec3 m_localScale ID_VEC1;
 
     glm::vec3 m_worldPosition ID_VEC;
     glm::quat m_worldOrientation ID_QUAT;
-    glm::vec3 m_worldScale ID_VEC;
+    glm::vec3 m_worldScale ID_VEC1;
 
     glm::mat4 m_localMatrix ID_MAT4X4;
     glm::mat4 m_worldMatrix ID_MAT4X4;
@@ -53,6 +61,7 @@ class Entity final {
 
     Mesh* m_mesh = nullptr;
     TextureRgba* m_texture = nullptr;
+    glm::vec4 m_color ID_COL;
 
     void update(bool isLocal);
 public:
@@ -82,6 +91,14 @@ public:
 
     void setTexture(TextureRgba* texture) {
         m_texture = texture;
+    }
+
+    [[nodiscard]] glm::vec4 getColor() const {
+        return m_color;
+    }
+
+    void setColor(const glm::vec4& color) {
+        m_color = color;
     }
 
     [[nodiscard]] glm::vec3 getLocalPosition() const {

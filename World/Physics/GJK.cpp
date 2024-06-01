@@ -4,14 +4,14 @@
 
 #include "GJK.h"
 
-#include "Simplex.h"
+#include <iostream>
 
 namespace GJK {
-    glm::vec3 GJK::supportPoint(const EntityCollision& objA, const EntityCollision& objB, const glm::vec3 &direction) {
+    glm::vec3 supportPoint(const EntityCollision& objA, const EntityCollision& objB, const glm::vec3 &direction) {
         return objA.collider->findFurthestPoint(objA.entity, direction) - objB.collider->findFurthestPoint(objB.entity, -direction);
     }
 
-    bool GJK::gjk(const EntityCollision& objA, const EntityCollision& objB, Simplex& simplex) {
+    bool gjk(const EntityCollision& objA, const EntityCollision& objB, Simplex& simplex) {
         glm::vec3 support = supportPoint(objA, objB, glm::vec3(1, 0, 0));
         glm::vec3 direction = -support;
 
@@ -34,23 +34,21 @@ namespace GJK {
         return false;
     }
 
-    bool GJK::nextSimplex(Simplex &simplex, glm::vec3 &direction) {
+    bool nextSimplex(Simplex& simplex, glm::vec3& direction) {
         switch (simplex.size()) {
             case 2: return line(simplex, direction);
             case 3: return triangle(simplex, direction);
             case 4: return tetrahedron(simplex, direction);
+            default: return false;
         }
-
-        return false;
     }
 
-    bool GJK::sameDirection(const glm::vec3 &direction, const glm::vec3 &ao) {
+    bool sameDirection(const glm::vec3& direction, const glm::vec3& ao) {
         return dot(direction, ao) > 0;
     }
 
-    bool GJK::line(Simplex &simplex, glm::vec3 &direction) {
+    bool line(Simplex& simplex, glm::vec3& direction) {
         glm::vec3 a = simplex[0];
-
         const glm::vec3 b = simplex[1];
         const glm::vec3 ab = b - a;
 
@@ -65,7 +63,7 @@ namespace GJK {
     }
 
     // ReSharper disable once CppDFAConstantFunctionResult
-    bool GJK::triangle(Simplex &simplex, glm::vec3 &direction) {
+    bool triangle(Simplex& simplex, glm::vec3& direction) {
         glm::vec3 a = simplex[0];
         glm::vec3 b = simplex[1];
         glm::vec3 c = simplex[2];
@@ -81,9 +79,7 @@ namespace GJK {
             } else {
                 return line(simplex = { a, b }, direction);
             }
-        }
-
-        else {
+        } else {
             if (sameDirection(cross(ab, abc), ao)) {
                 return line(simplex = { a, b }, direction);
             }
@@ -99,7 +95,7 @@ namespace GJK {
         return false;
     }
 
-    bool GJK::tetrahedron(Simplex &simplex, glm::vec3 &direction) {
+    bool tetrahedron(Simplex &simplex, glm::vec3 &direction) {
         glm::vec3 a = simplex[0];
         glm::vec3 b = simplex[1];
         glm::vec3 c = simplex[2];

@@ -19,7 +19,7 @@ void glInitExtensions() {
         FAIL_EXIT;
     }
 
-    HWND dummyWndHandle = CreateWindowExA(
+    HWND__* dummyWndHandle = CreateWindowExA(
         0,
         dummyWndClass.lpszClassName,
         nullptr,
@@ -36,7 +36,7 @@ void glInitExtensions() {
         FAIL_EXIT;
     }
 
-    HDC dummyDC = GetDC(dummyWndHandle);
+    HDC__* dummyDC = GetDC(dummyWndHandle);
 
     PIXELFORMATDESCRIPTOR pixelFormatDescriptor = {
         .nSize = sizeof(PIXELFORMATDESCRIPTOR),

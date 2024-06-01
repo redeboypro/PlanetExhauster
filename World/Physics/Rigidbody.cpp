@@ -4,6 +4,8 @@
 
 #include "Rigidbody.h"
 
+#include <iostream>
+
 #include "EPA.h"
 #include "GJK.h"
 
@@ -58,10 +60,10 @@ void Rigidbody::refreshTriggers(const std::vector<Rigidbody*>& others) {
 
 void Rigidbody::refreshResponses(const std::vector<Response> &responses) {
     for (const auto [rigidbody, collision] : m_responses) {
-        if (std::find_if(responses.begin(), responses.end(),
-        [&](const std::pair<Rigidbody*, Collision> &localResponse) {
-            return localResponse.first == rigidbody;
-        }) == responses.end()) {
+        if (std::ranges::find_if(responses,
+            [&](const Response& localResponse) {
+                return localResponse.rigidbody == rigidbody;
+            }) == responses.end()) {
             if (collisionExit) collisionExit(rigidbody, collision);
         }
     }

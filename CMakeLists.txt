@@ -27,6 +27,17 @@ add_executable(PlanetExhauster main.cpp
         World/Physics/Collision.h
         World/Physics/Rigidbody.cpp
         World/Physics/Rigidbody.h
+        Input.cpp
+        Input.h
+        AssetManager.cpp
+        AssetManager.h
+        GUI/Font.cpp
+        GUI/Font.h
+        GUI/GUI.cpp
+        GUI/GUI.h
+        Primitives.h
+        Game/GameEntryPoint.cpp
+        Game/GameEntryPoint.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)

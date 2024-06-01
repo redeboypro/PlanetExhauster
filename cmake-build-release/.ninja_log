@@ -1,7 +1,15 @@
 # ninja log v5
-14	842	7380778484832092	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	aae95442e6503ac2
-17	1219	7380778488605510	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	f8760d05ae2ee7ce
-12	1979	7383327305550127	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	7a32bbc4291cdb38
-1191	1544	7383328241118286	PlanetExhauster.exe	bd4e06dfe653183d
-6	1191	7383328237650280	CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj	8bc6a8e22dd78b00
-9	949	7383328235229771	CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj	c05370c7b5b9072b
+18	1318	7387144811600852	CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj	aae95442e6503ac2
+20	1980	7387144818186831	CMakeFiles/PlanetExhauster.dir/Window.cpp.obj	f8760d05ae2ee7ce
+28	1753	7387144815934790	CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj	4a5c3a08b8c351de
+45	2325	7387144821669997	CMakeFiles/PlanetExhauster.dir/World/Physics/Rigidbody.cpp.obj	84cb7508ea09d4fe
+12	1841	7387146824892731	CMakeFiles/PlanetExhauster.dir/main.cpp.obj	7a32bbc4291cdb38
+1842	2048	7387146826904556	PlanetExhauster.exe	be46015196365a45
+34	682	7387144805225056	CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj	ae9b7e15c03836b5
+23	2099	7387144819397933	CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj	8bc6a8e22dd78b00
+26	2675	7387144825165039	CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj	c05370c7b5b9072b
+37	2375	7387144822160445	CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj	22c696f5e404a66f
+30	2199	7387144820408851	CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj	c3bda46544e1971b
+7	230	7388780595545004	build.ninja	40611c7136dfc9d5
+683	1889	7387144817235968	CMakeFiles/PlanetExhauster.dir/Input.cpp.obj	f9c042d0a6c6d8c
+1319	2671	7387144825125005	CMakeFiles/PlanetExhauster.dir/AssetManager.cpp.obj	903818e57519f655

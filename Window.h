@@ -7,9 +7,9 @@
 #include <chrono>
 #include "GLAPI.h"
 
-#define WND_CLASSNAME "_WND"
+#define F32(I32) static_cast<float>(I32)
 
-using WndUpdPtrt = void(double delta);
+#define WND_CLASSNAME "_WND"
 
 using TimePt = std::chrono::time_point<std::chrono::system_clock>;
 
@@ -17,7 +17,6 @@ class Window {
     HWND m_wndHandle;
     HDC m_wndDCHandle;
     HGLRC m_glContextHandle;
-    WndUpdPtrt* m_updPtrt;
     bool m_running = true;
     TimePt m_previousTime;
 
@@ -26,12 +25,22 @@ public:
         LPCSTR wndTitle,
         int32_t wndWidth,
         int32_t wndHeight,
-        WndUpdPtrt* updPtrt,
         int32_t glMajor,
         int32_t glMinor);
     ~Window();
 
-    void run();
+    [[nodiscard]] HWND__* getHandle() const {
+        return m_wndHandle;
+    }
+
+    const int32_t width, height;
+
+    [[nodiscard]] bool running() const {
+        return m_running;
+    }
+
+    void beginFrame(float& deltaTime);
+    void endFrame() const;
 
     static void vsync(bool activeState);
 };

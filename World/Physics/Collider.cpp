@@ -4,7 +4,12 @@
 
 #include "Collider.h"
 
-#include <cfloat>
+Collider::Collider(const Mesh* mesh) {
+    const auto& vertices = mesh->vertices;
+    for (size_t i = 0; i < vertices.size(); i += 3) {
+        m_vertices.emplace_back(vertices[i], vertices[i + 1], vertices[i + 2]);
+    }
+}
 
 glm::vec3 Collider::findFurthestPoint(const Entity* entity, const glm::vec3& direction) const {
     glm::vec3 maxPoint = m_vertices[m_vertices.size() - 1];

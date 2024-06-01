@@ -213,14 +213,15 @@ public:
     }
 
     template<typename T>
-    void store(T* data, const GLsizei bufferSize) {
+    bool store(T* data, const GLsizei bufferSize) {
         bind();
         if (!m_stored) {
             glBufferData(BUFFER_TYPE, bufferSize * sizeof(T), data, GL_STATIC_DRAW);
             m_stored = true;
-        } else {
-            glBufferSubData(BUFFER_TYPE, 0, bufferSize, data);
+            return false;
         }
+        glBufferSubData(BUFFER_TYPE, 0, bufferSize, data);
+        return true;
     }
 };
 

@@ -8,7 +8,6 @@
 
 #include "Collider.h"
 #include "Collision.h"
-#include "../Entity.h"
 
 class Rigidbody;
 
@@ -32,20 +31,24 @@ class Rigidbody final {
     float m_fallAcceleration;
 
 public:
-    explicit Rigidbody(const bool isCamera) :
-    Rigidbody(new Entity(isCamera)) {}
-
     explicit Rigidbody(Entity* entity):
     m_entity(entity),
     m_isGrounded(false),
-    m_stepLimitAngle(30.0F),
+    m_stepLimitAngle(30.0F / 90.0F),
     m_fallVelocity(0),
-    m_fallAcceleration(-80.0F),
+    m_fallAcceleration(-50.0F),
     isKinematic(true),
     isTrigger(false) {}
 
+    explicit Rigidbody(const bool isCamera) :
+    Rigidbody(new Entity(isCamera)) {}
+
     ~Rigidbody() {
         delete m_entity;
+    }
+
+    [[nodiscard]] bool grounded() const {
+        return m_isGrounded;
     }
 
     [[nodiscard]] Entity* getEntity() const {

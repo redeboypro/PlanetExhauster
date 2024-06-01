@@ -7,6 +7,8 @@
 #include <vec3.hpp>
 
 #include "Collider.h"
+#include "Collider.h"
+#include "Collider.h"
 #include "Rigidbody.h"
 #include "Simplex.h"
 
@@ -20,7 +22,7 @@ namespace GJK {
     bool gjk(const EntityCollision& objA, const EntityCollision& objB, Simplex& simplex);
     bool nextSimplex(Simplex& simplex, glm::vec3& direction);
     bool sameDirection(const glm::vec3& direction, const glm::vec3& ao);
-    bool line(Simplex& simplex, glm::vec3& direction);
+    bool line(::Simplex &simplex, glm::vec3& direction);
     bool triangle(Simplex& simplex, glm::vec3& direction);
     bool tetrahedron(Simplex& simplex, glm::vec3& direction);
 }

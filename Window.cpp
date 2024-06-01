@@ -4,7 +4,7 @@
 
 #include "Window.h"
 
-LRESULT CALLBACK WndMsgCb(HWND wndHandle, uint32_t msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WndMsgCb(HWND__ *wndHandle, const uint32_t msg, const WPARAM wParam, const LPARAM lParam)
 {
     switch (msg)
     {
@@ -21,13 +21,12 @@ LRESULT CALLBACK WndMsgCb(HWND wndHandle, uint32_t msg, WPARAM wParam, LPARAM lP
 }
 
 Window::Window(
-    LPCSTR wndTitle,
-    int32_t wndWidth,
-    int32_t wndHeight,
-    WndUpdPtrt* updPtrt,
-    int32_t glMajor,
-    int32_t glMinor) :
-m_updPtrt(updPtrt) {
+    const LPCSTR wndTitle,
+    const int32_t wndWidth,
+    const int32_t wndHeight,
+    const int32_t glMajor,
+    const int32_t glMinor) :
+width(wndWidth), height(wndHeight){
     glInitExtensions();
 
     const WNDCLASSEX wndClass = {
@@ -91,36 +90,37 @@ Window::~Window() {
     DestroyWindow(m_wndHandle);
 }
 
-void Window::run() {
-    while (m_running) {
-        MSG msg = {};
-        if (PeekMessage(
-            &msg,
-            nullptr,
-            0,
-            0,
-            PM_REMOVE)) {
-            if (msg.message != WM_QUIT) {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
-            else {
-                m_running = false;
-                continue;
-            }
+void Window::beginFrame(float& deltaTime) {
+    MSG msg = {};
+    if (PeekMessage(
+        &msg,
+        nullptr,
+        0,
+        0,
+        PM_REMOVE)) {
+        if (msg.message != WM_QUIT) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
         }
-
-        TimePt currentTime = std::chrono::system_clock::now();
-        auto elapsedSeconds = std::chrono::duration<double>();
-
-        if (m_previousTime.time_since_epoch().count())
-            elapsedSeconds = currentTime - m_previousTime;
-
-        m_previousTime = currentTime;
-        m_updPtrt(elapsedSeconds.count());
-
-        wglSwapLayerBuffers(m_wndDCHandle, WGL_SWAP_MAIN_PLANE);
+        else {
+            m_running = false;
+            return;
+        }
     }
+
+    const TimePt currentTime = std::chrono::system_clock::now();
+    auto elapsedSeconds = std::chrono::duration<double>();
+
+    if (m_previousTime.time_since_epoch().count())
+        elapsedSeconds = currentTime - m_previousTime;
+
+    m_previousTime = currentTime;
+
+    deltaTime = F32(elapsedSeconds.count());
+}
+
+void Window::endFrame() const {
+    wglSwapLayerBuffers(m_wndDCHandle, WGL_SWAP_MAIN_PLANE);
 }
 
 void Window::vsync(const bool activeState) {

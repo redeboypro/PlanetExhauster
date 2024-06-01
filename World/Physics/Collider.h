@@ -4,13 +4,15 @@
 
 #ifndef COLLIDER_H
 #define COLLIDER_H
-#include <vec3.hpp>
 #include <vector>
-#include <detail/func_geometric.inl>
+#include <cfloat>
 
 #include "../Entity.h"
 
 struct Collider final {
+    explicit Collider(const std::vector<glm::vec3>& vertices) : m_vertices(vertices) {}
+    explicit Collider(const Mesh* mesh);
+
     [[nodiscard]] glm::vec3 findFurthestPoint(const Entity* entity, const glm::vec3& direction) const;
 
     [[nodiscard]] size_t size() const {

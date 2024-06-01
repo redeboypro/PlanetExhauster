@@ -15,7 +15,7 @@
 
 struct TexParameter final {
     GLenum name;
-    GLenum mode;
+    GLint mode;
 };
 
 class TextureRgba final {
@@ -32,22 +32,23 @@ public:
     TextureRgba(
         const int32_t width,
         const int32_t height,
-        auto... param) :
+        std::initializer_list<TexParameter> parameters) :
     width(width),
     height(height) {
         glGenTextures(1, &m_id);
-
         bind();
 
-        (glTexParameteri(GL_TEXTURE_2D, param.name, param.mode), ...);
+        for (const auto [name, mode] : parameters) {
+            glTexParameteri(GL_TEXTURE_2D, name, mode);
+        }
 
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
-            GL_RGBA,
+            GL_RGBA8,
             width, height,
             0,
-            GL_RGBA,
+            0x80E1,
             GL_UNSIGNED_BYTE,
             nullptr);
     }
@@ -56,8 +57,8 @@ public:
         const int32_t width,
         const int32_t height,
         const std::vector<uint8_t>& data,
-        auto... param) :
-    TextureRgba(width, height, param...) {
+        const std::initializer_list<TexParameter> parameters) :
+    TextureRgba(width, height, parameters) {
         m_buffer = data;
         apply();
     }
@@ -107,7 +108,7 @@ public:
             0,
             0, 0,
             width, height,
-            GL_RGBA,
+            0x80E1,
             GL_UNSIGNED_BYTE,
             m_buffer.data());
     }

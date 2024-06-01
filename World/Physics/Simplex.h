@@ -6,12 +6,13 @@
 #define SIMPLEX_H
 #include <array>
 #include <vec3.hpp>
+#include <vector>
 
 
 struct Simplex final {
-    Simplex(): m_vertices() {}
+    Simplex() : m_vertices() {}
 
-    Simplex& operator=(std::initializer_list<glm::vec3> vertexList);
+    Simplex& operator=(const std::vector<glm::vec3> &vertexList);
     void push(const glm::vec3& vertex);
 
     glm::vec3& operator[](const int32_t index) {
