@@ -42,6 +42,6 @@ add_executable(PlanetExhauster main.cpp
 
 target_link_libraries(PlanetExhauster opengl32)
 
-include_directories(D:/glm-1.0.1-light/glm)
+include_directories(external/glm-1.0.1-light/glm)
 
 target_link_libraries(PlanetExhauster -static)

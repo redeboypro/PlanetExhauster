@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PlanetExhauster"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PlanetExhauster">
+				<Option output="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/PlanetExhauster.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/probn/source/repos/PlanetExhauster/external/glm-1.0.1-light/glm"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 PlanetExhauster"/>
+					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PlanetExhauster/fast">
+				<Option output="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/PlanetExhauster.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/probn/source/repos/PlanetExhauster/external/glm-1.0.1-light/glm"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 PlanetExhauster/fast"/>
+					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/probn/source/repos/PlanetExhauster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Assert.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/AssetManager.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/AssetManager.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GLAPI.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GLAPI.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GUI/Font.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GUI/Font.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GUI/GUI.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/GUI/GUI.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/GameEntryPoint.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/GameEntryPoint.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Input.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Input.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Mesh.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Primitives.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Shader.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Texture.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Window.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Window.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Entity.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Entity.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Collider.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Collider.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Collision.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/EPA.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/EPA.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/GJK.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/GJK.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Rigidbody.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Rigidbody.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Simplex.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/Physics/Simplex.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/World.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/World/World.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/main.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

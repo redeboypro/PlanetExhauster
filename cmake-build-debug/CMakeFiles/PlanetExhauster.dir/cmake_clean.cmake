@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/PlanetExhauster.dir/AssetManager.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/AssetManager.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/GUI/Font.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/GUI/Font.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/GUI/GUI.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/GUI/GUI.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/Input.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/Input.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/Window.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/Window.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Rigidbody.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Rigidbody.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/main.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/main.cpp.obj.d"
+  "PlanetExhauster.exe"
+  "PlanetExhauster.exe.manifest"
+  "PlanetExhauster.pdb"
+  "libPlanetExhauster.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/PlanetExhauster.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
