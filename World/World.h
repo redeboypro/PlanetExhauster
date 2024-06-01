@@ -4,10 +4,10 @@
 
 #ifndef WORLD_H
 #define WORLD_H
-#include <unordered_map>
-#include <gtc/type_ptr.hpp>
 
 #include <ranges>
+#include <unordered_map>
+
 #include "Entity.h"
 #include "../Shader.h"
 #include "../Texture.h"

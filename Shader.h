@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <gtc/type_ptr.inl>
+
 #include "GLAPI.h"
 
 #define SHADER_POSITION_ATTRIB_NAME "in_position"

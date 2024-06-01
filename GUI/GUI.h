@@ -4,10 +4,9 @@
 
 #ifndef GUI_H
 #define GUI_H
-#include <vec2.hpp>
 
+#include <vec2.hpp>
 #include <ext/matrix_transform.hpp>
-#include <gtc/type_ptr.inl>
 
 #include "Font.h"
 #include "../Input.h"
