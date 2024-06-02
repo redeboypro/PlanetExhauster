@@ -38,6 +38,8 @@ add_executable(PlanetExhauster main.cpp
         Primitives.h
         Game/GameEntryPoint.cpp
         Game/GameEntryPoint.h
+        Game/PlayerController.cpp
+        Game/PlayerController.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)

@@ -121,7 +121,12 @@ void World::render() {
 
             m_shader->uniform1i(glHasTextureUniform, texture != nullptr);
             m_shader->uniform4f(glColorUniform, color.r, color.g, color.b, color.a);
-            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(m_camera->getEntity()->getViewMatrix()), false);
+
+            const auto* cameraEnt = m_camera->getEntity();
+            glm::mat4 viewMatrix = toMat4(conjugate(cameraEnt->getWorldOrientation())) *
+                translate(-cameraEnt->getWorldPosition());
+
+            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(glm::inverse(cameraEnt->getWorldMatrix())), false);
             m_shader->uniformMatrix4fv(glProjectionMatrixUniform, value_ptr(m_projectionMatrix), false);
             m_shader->uniformMatrix4fv(glModelMatrixUniform, value_ptr(entity->getWorldMatrix()), false);
 

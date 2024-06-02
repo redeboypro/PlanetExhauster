@@ -95,6 +95,10 @@ public:
         m_collisionShapes = collisionShapes;
     }
 
+    void setCollisionShapes(const std::vector<Collider*>& collisionShapes) {
+        m_collisionShapes = collisionShapes;
+    }
+
     void accelerateFall(const float deltaTime) {
         m_fallVelocity += m_fallAcceleration * deltaTime;
     }

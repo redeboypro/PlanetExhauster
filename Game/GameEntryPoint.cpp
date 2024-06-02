@@ -44,6 +44,13 @@ GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
         shaderVertexAttrib,
         shaderTexCoordAttrib);
 
+    const std::initializer_list<TexParameter> textureParameters {
+        TexParameter {GL_TEXTURE_MIN_FILTER, GL_NEAREST},
+        TexParameter {GL_TEXTURE_MAG_FILTER, GL_NEAREST},
+        TexParameter {GL_TEXTURE_WRAP_S, GL_REPEAT},
+        TexParameter {GL_TEXTURE_WRAP_T, GL_REPEAT}
+    };
+
     m_world = new World(
         glm::radians(GAME_CAMERA_FOV),
         F32(GAME_WIN_W) / F32(GAME_WIN_H),
@@ -52,6 +59,18 @@ GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
     m_world->setShader(m_worldShader);
 
     m_gui = new GUI(m_guiShader, m_input, m_window);
+
+    m_player = new PlayerController(m_world, m_input);
+
+    m_landscape = m_world->instantiate(World::defaultLayer);
+    auto* landscapeEnt = m_landscape->getEntity();
+    landscapeEnt->setLocalPosition(-unit_y);
+    landscapeEnt->setLocalScale(glm::vec3 {5.0F});
+    landscapeEnt->setMesh(m_assetManager->loadMesh(LANDSCAPE_MESH_FILEPATH));
+    landscapeEnt->setTexture(m_assetManager->loadTexture(
+        CLIFFS_TEXTURE_FILEPATH,
+        textureParameters));
+    m_landscape->setCollisionShapes(m_assetManager->loadCollision(LANDSCAPE_COLLISIONMESH_FILEPATH));
 
     while (m_window->running()) {
         GLfloat deltaTime;
@@ -71,6 +90,7 @@ GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
 }
 
 GameEntryPoint::~GameEntryPoint() {
+    delete m_player;
     delete m_input;
     delete m_gui;
     delete m_world;
@@ -78,6 +98,6 @@ GameEntryPoint::~GameEntryPoint() {
     delete m_window;
 }
 
-void GameEntryPoint::update(GLfloat &deltaTime) {
-    //TODO: Game loop implementation
+void GameEntryPoint::update(const GLfloat deltaTime) const {
+    m_player->update(deltaTime);
 }

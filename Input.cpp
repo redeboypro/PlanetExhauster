@@ -17,14 +17,23 @@ bool Input::getKey(const KeyCode key) {
 }
 
 void Input::init() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_currentKeyboardState[key] = m_lastKeyboardState[key] = false;
     }
+
+    RECT windowRect;
+    GetWindowRect(m_wndHandle, &windowRect);
+
+    const int32_t centerX = (windowRect.left + windowRect.right) / 2;
+    const int32_t centerY = (windowRect.top + windowRect.bottom) / 2;
+
+    SetCursorPos(centerX, centerY);
+    ClipCursor(&windowRect);
 }
 
 void Input::begin() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_currentKeyboardState[key] = (GetAsyncKeyState(i) & 0x8000) != 0;
     }
@@ -38,7 +47,7 @@ void Input::begin() {
 }
 
 void Input::end() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_lastKeyboardState[key] = m_currentKeyboardState[key];
     }

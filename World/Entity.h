@@ -54,7 +54,6 @@ class Entity final {
 
     glm::mat4 m_localMatrix ID_MAT4X4;
     glm::mat4 m_worldMatrix ID_MAT4X4;
-    glm::mat4 m_viewMatrix ID_MAT4X4;
 
     bool m_isCamera;
     bool m_isActive;
@@ -63,7 +62,7 @@ class Entity final {
     TextureRgba* m_texture = nullptr;
     glm::vec4 m_color ID_COL;
 
-    void update(bool isLocal);
+    void update();
 public:
     explicit Entity(bool isCamera);
 
@@ -106,7 +105,7 @@ public:
     }
 
     glm::vec3 setLocalPosition(const glm::vec3& vec) {
-        m_localPosition = vec; update(true);
+        m_localPosition = vec; update();
         return vec;
     }
 
@@ -114,9 +113,9 @@ public:
         return m_localOrientation;
     }
 
-    glm::quat setLocalOrientation(const glm::quat& vec) {
-        m_localOrientation = vec; update(true);
-        return vec;
+    glm::quat setLocalOrientation(const glm::quat& quat) {
+        m_localOrientation = quat; update();
+        return quat;
     }
 
     [[nodiscard]] glm::vec3 getLocalScale() const {
@@ -124,7 +123,7 @@ public:
     }
 
     glm::vec3 setLocalScale(const glm::vec3& vec) {
-        m_localScale = vec; update(true);
+        m_localScale = vec; update();
         return vec;
     }
 
@@ -132,39 +131,24 @@ public:
         return m_worldPosition;
     }
 
-    glm::vec3 setWorldPosition(const glm::vec3& vec) {
-        m_worldPosition = vec; update(false);
-        return vec;
-    }
-
     [[nodiscard]] glm::quat getWorldOrientation() const {
         return m_worldOrientation;
-    }
-
-    glm::quat setWorldOrientation(const glm::quat& vec) {
-        m_worldOrientation = vec; update(false);
-        return vec;
     }
 
     [[nodiscard]] glm::vec3 getWorldScale() const {
         return m_worldScale;
     }
 
-    glm::vec3 setWorldScale(const glm::vec3& vec) {
-        m_worldScale = vec; update(false);
-        return vec;
-    }
-
     [[nodiscard]] glm::vec3 forward() const {
-        return m_worldOrientation * unit_z;
+        return m_worldOrientation * -unit_z;
     }
 
     [[nodiscard]] glm::vec3 up() const {
-        return m_worldOrientation * unit_y;
+        return m_worldOrientation * -unit_y;
     }
 
     [[nodiscard]] glm::vec3 right() const {
-        return m_worldOrientation * unit_x;
+        return m_worldOrientation * -unit_x;
     }
 
     [[nodiscard]] size_t getChildCount() const {
@@ -187,9 +171,8 @@ public:
         return m_worldMatrix;
     }
 
-    [[nodiscard]] glm::mat4 getViewMatrix() const {
-        return m_viewMatrix;
-    }
+    [[nodiscard]] glm::vec3 worldToLocal(const glm::vec3 &vec) const;
+    [[nodiscard]] glm::vec3 localToWorld(const glm::vec3 &vec) const;
 
     [[nodiscard]] bool active() const {
         return m_isActive;

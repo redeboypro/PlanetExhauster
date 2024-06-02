@@ -12,7 +12,7 @@
 #include "GLAPI.h"
 
 #define SHADER_POSITION_ATTRIB_NAME "in_position"
-#define SHADER_TEXCOORD_ATTRIB_NAME       "in_uv"
+#define SHADER_TEXCOORD_ATTRIB_NAME "in_uv"
 
 struct ShaderAttrib final {
    GLuint location;

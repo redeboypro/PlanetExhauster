@@ -27,6 +27,10 @@ char* AssetManager::readBuffer(const std::string &fileName) {
 }
 
 AssetManager::~AssetManager() {
+    for (const auto col: m_colliders) {
+        delete col;
+    }
+
     for (const auto mesh: m_meshes) {
         delete mesh;
     }
@@ -45,15 +49,15 @@ Mesh* AssetManager::loadMesh(const std::string& fileName) {
     std::vector<GLfloat> texCoordinates;
     std::vector<GLuint> indices;
 
-    for (int i = 0; i < vertexCount * 3; ++i) {
+    for (int32_t i = 0; i < vertexCount * 3; ++i) {
         vertices.push_back(readf(buffer, ptr));
     }
 
-    for (int i = 0; i < vertexCount * 2; ++i) {
+    for (int32_t i = 0; i < vertexCount * 2; ++i) {
         texCoordinates.push_back(readf(buffer, ptr));
     }
 
-    for (int i = 0; i < indexCount; ++i) {
+    for (int32_t i = 0; i < indexCount; ++i) {
         indices.push_back(readui(buffer, ptr));
     }
 
@@ -78,7 +82,7 @@ TextureRgba* AssetManager::loadTexture(const std::string& fileName, const std::i
 
     std::vector<uint8_t> pixelBuffer;
 
-    for (int i = 0; i < stride * height; ++i) {
+    for (int32_t i = 0; i < stride * height; ++i) {
         pixelBuffer.push_back(readuc(buffer, ptr));
     }
 
@@ -88,4 +92,42 @@ TextureRgba* AssetManager::loadTexture(const std::string& fileName, const std::i
     delete[] buffer;
 
     return texture;
+}
+
+std::vector<Collider*> AssetManager::loadCollision(const std::string &fileName) {
+    int32_t ptr = 0;
+    char* buffer = readBuffer(fileName);
+
+    const int32_t meshCount = readi(buffer, ptr);
+    std::vector<Collider*> colliders;
+
+    for (int mi = 0; mi < meshCount; ++mi) {
+        std::vector<glm::vec3> vertices;
+        const int32_t vertexCount = readi(buffer, ptr);
+        for (int32_t vi = 0; vi < vertexCount * 3; vi += 3) {
+            vertices.emplace_back(
+                    readf(buffer, ptr),
+                    readf(buffer, ptr),
+                    readf(buffer, ptr));
+        }
+        auto* collider = new Collider(vertices);
+        m_colliders.push_back(collider);
+        colliders.push_back(collider);
+    }
+
+    delete[] buffer;
+
+    return colliders;
+}
+
+void AssetManager::addExternal(Mesh* mesh) {
+    m_meshes.push_back(mesh);
+}
+
+void AssetManager::addExternal(TextureRgba* texture) {
+    m_textures.push_back(texture);
+}
+
+void AssetManager::addExternal(Collider* collider) {
+    m_colliders.push_back(collider);
 }
