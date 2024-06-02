@@ -10,21 +10,24 @@
 #include "Obstacle.h"
 #include "../../World/World.h"
 
-namespace Map{
+namespace Map
+{
     class ObstaclesGrid
     {
-        Entity* m_entity;
-        Rigidbody* m_rigidbody;
-        Entity* m_obstaclesParent;
+        World* m_world;
+
+        Entity *m_entity;
+        Rigidbody *m_rigidbody;
+        Entity *m_obstaclesParent;
 
         glm::ivec2 m_size;
         std::vector<std::vector<bool>> m_grid;
 
     public:
-        ObstaclesGrid(Entity* entity, Rigidbody* rigidbody, Entity* obstaclesParent,
-                      const glm::ivec2 &size = glm::ivec2(6, 6));
+        ObstaclesGrid(Entity *obstaclesParent, World *world, const glm::ivec2 &size = glm::ivec2(6, 6));
 
-        void add(const Map::Obstacle& obstacle, int x, int y, World* world);
+        void add(const Map::Obstacle &obstacle, int x, int y);
+
         bool hasAt(int x, int y);
 
         [[nodiscard]] const glm::ivec2 &getSize() const {

@@ -7,6 +7,7 @@
 
 #include "ObstaclesGrid.h"
 #include "Obstacle.h"
+#include <random>
 
 namespace Map{
     class ObstaclesGenerator

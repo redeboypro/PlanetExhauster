@@ -4,8 +4,12 @@
 
 #include "ObstaclesGrid.h"
 
-Map::ObstaclesGrid::ObstaclesGrid(Entity *entity, Rigidbody *rigidbody, Entity *obstaclesParent, const glm::ivec2 &size)
-        : m_entity(entity), m_rigidbody(rigidbody), m_obstaclesParent(obstaclesParent), m_size(size) {
+Map::ObstaclesGrid::ObstaclesGrid(Entity *obstaclesParent, World *world, const glm::ivec2 &size)
+        : m_world(world), m_obstaclesParent(obstaclesParent), m_size(size) {
+    m_rigidbody = m_world->instantiate(World::defaultLayer);
+    m_rigidbody->isKinematic = true;
+    m_entity = m_rigidbody->getEntity();
+
     m_grid.reserve(m_size.x);
 
     for (std::vector<bool> o: m_grid) {
@@ -13,14 +17,14 @@ Map::ObstaclesGrid::ObstaclesGrid(Entity *entity, Rigidbody *rigidbody, Entity *
     }
 }
 
-void Map::ObstaclesGrid::add(const Map::Obstacle &obstacle, int x, int y, World *world) {
+void Map::ObstaclesGrid::add(const Map::Obstacle &obstacle, int x, int y) {
     for (int i = 0; i < obstacle.getSize().x; i++) {
         for (int j = 0; j < obstacle.getSize().y; j++) {
             m_grid[x + i][y + j] = true;
         }
     }
 
-    world->instantiate(obstacle.getRigidbody(), World::defaultLayer);
+    m_world->instantiate(obstacle.getRigidbody(), World::defaultLayer);
 
     m_obstaclesParent->addChild(obstacle.getEntity());
     obstacle.getEntity()->setLocalPosition(glm::vec3(x, 0, y));

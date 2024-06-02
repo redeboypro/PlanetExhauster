@@ -10,19 +10,22 @@
 #include "../../World/Entity.h"
 #include "../../World/Physics/Collider.h"
 #include "../../World/Physics/Rigidbody.h"
+#include "../../World/World.h"
 
 namespace Map
 {
     class Obstacle
     {
-        Entity* m_entity;
-        Rigidbody* m_rigidbody;
+        Entity *m_entity;
+        Rigidbody *m_rigidbody;
+        Collider *m_collider;
 
         glm::ivec2 m_size;
         int m_maxCount;
 
     public:
-        Obstacle(Entity *entity, Rigidbody *rigidbody, const glm::ivec2 &size, int maxCount);
+        Obstacle(const glm::ivec2 &size, int maxCount, Mesh *mesh, World *world);
+        ~Obstacle();
 
         [[nodiscard]] const glm::ivec2 &getSize() const {
             return m_size;

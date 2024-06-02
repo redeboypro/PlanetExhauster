@@ -2,7 +2,6 @@
 // Created by probn on 02.06.2024.
 //
 
-#include <random>
 #include "ObstaclesGenerator.h"
 
 Map::ObstaclesGenerator::ObstaclesGenerator(Map::ObstaclesGrid *grid, std::vector<Map::Obstacle> prefabs, World *world)
