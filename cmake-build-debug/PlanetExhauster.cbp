@@ -117,6 +117,24 @@
 		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/GameEntryPoint.h">
 			<Option target="PlanetExhauster"/>
 		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/Obstacle.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/Obstacle.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/ObstaclesGenerator.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/ObstaclesGenerator.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/ObstaclesGrid.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/ObstaclesGrid.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
 		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Input.cpp">
 			<Option target="PlanetExhauster"/>
 		</Unit>

@@ -80,12 +80,12 @@ clean: CMakeFiles/PlanetExhauster.dir/clean
 CMakeFiles/PlanetExhauster.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target PlanetExhauster"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target PlanetExhauster"
 .PHONY : CMakeFiles/PlanetExhauster.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PlanetExhauster.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/PlanetExhauster.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/PlanetExhauster.dir/rule

@@ -248,6 +248,78 @@ Game/GameEntryPoint.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.s
 .PHONY : Game/GameEntryPoint.cpp.s
 
+Game/Map/Obstacle.obj: Game/Map/Obstacle.cpp.obj
+.PHONY : Game/Map/Obstacle.obj
+
+# target to build an object file
+Game/Map/Obstacle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj
+.PHONY : Game/Map/Obstacle.cpp.obj
+
+Game/Map/Obstacle.i: Game/Map/Obstacle.cpp.i
+.PHONY : Game/Map/Obstacle.i
+
+# target to preprocess a source file
+Game/Map/Obstacle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.i
+.PHONY : Game/Map/Obstacle.cpp.i
+
+Game/Map/Obstacle.s: Game/Map/Obstacle.cpp.s
+.PHONY : Game/Map/Obstacle.s
+
+# target to generate assembly for a file
+Game/Map/Obstacle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.s
+.PHONY : Game/Map/Obstacle.cpp.s
+
+Game/Map/ObstaclesGenerator.obj: Game/Map/ObstaclesGenerator.cpp.obj
+.PHONY : Game/Map/ObstaclesGenerator.obj
+
+# target to build an object file
+Game/Map/ObstaclesGenerator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.obj
+.PHONY : Game/Map/ObstaclesGenerator.cpp.obj
+
+Game/Map/ObstaclesGenerator.i: Game/Map/ObstaclesGenerator.cpp.i
+.PHONY : Game/Map/ObstaclesGenerator.i
+
+# target to preprocess a source file
+Game/Map/ObstaclesGenerator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.i
+.PHONY : Game/Map/ObstaclesGenerator.cpp.i
+
+Game/Map/ObstaclesGenerator.s: Game/Map/ObstaclesGenerator.cpp.s
+.PHONY : Game/Map/ObstaclesGenerator.s
+
+# target to generate assembly for a file
+Game/Map/ObstaclesGenerator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.s
+.PHONY : Game/Map/ObstaclesGenerator.cpp.s
+
+Game/Map/ObstaclesGrid.obj: Game/Map/ObstaclesGrid.cpp.obj
+.PHONY : Game/Map/ObstaclesGrid.obj
+
+# target to build an object file
+Game/Map/ObstaclesGrid.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj
+.PHONY : Game/Map/ObstaclesGrid.cpp.obj
+
+Game/Map/ObstaclesGrid.i: Game/Map/ObstaclesGrid.cpp.i
+.PHONY : Game/Map/ObstaclesGrid.i
+
+# target to preprocess a source file
+Game/Map/ObstaclesGrid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.i
+.PHONY : Game/Map/ObstaclesGrid.cpp.i
+
+Game/Map/ObstaclesGrid.s: Game/Map/ObstaclesGrid.cpp.s
+.PHONY : Game/Map/ObstaclesGrid.s
+
+# target to generate assembly for a file
+Game/Map/ObstaclesGrid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.s
+.PHONY : Game/Map/ObstaclesGrid.cpp.s
+
 Input.obj: Input.cpp.obj
 .PHONY : Input.obj
 
@@ -512,6 +584,15 @@ help:
 	@echo ... Game/GameEntryPoint.obj
 	@echo ... Game/GameEntryPoint.i
 	@echo ... Game/GameEntryPoint.s
+	@echo ... Game/Map/Obstacle.obj
+	@echo ... Game/Map/Obstacle.i
+	@echo ... Game/Map/Obstacle.s
+	@echo ... Game/Map/ObstaclesGenerator.obj
+	@echo ... Game/Map/ObstaclesGenerator.i
+	@echo ... Game/Map/ObstaclesGenerator.s
+	@echo ... Game/Map/ObstaclesGrid.obj
+	@echo ... Game/Map/ObstaclesGrid.i
+	@echo ... Game/Map/ObstaclesGrid.s
 	@echo ... Input.obj
 	@echo ... Input.i
 	@echo ... Input.s

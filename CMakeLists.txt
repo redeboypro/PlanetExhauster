@@ -38,7 +38,9 @@ add_executable(PlanetExhauster main.cpp
         Primitives.h
         Game/GameEntryPoint.cpp
         Game/GameEntryPoint.h
-)
+        Game/Map/Obstacle.cpp Game/Map/Obstacle.h Game/Map/ObstaclesGrid.cpp Game/Map/ObstaclesGrid.h
+        Game/Map/ObstaclesGenerator.cpp
+        Game/Map/ObstaclesGenerator.h)
 
 target_link_libraries(PlanetExhauster opengl32)
 
