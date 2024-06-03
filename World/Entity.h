@@ -182,7 +182,7 @@ public:
         m_isActive = activeState;
     }
 
-    void setParent(Entity* parent, bool worldTransformStays);
+    void setParent(Entity* parent);
 
     void addChild(Entity* child);
     void removeChild(Entity* child);

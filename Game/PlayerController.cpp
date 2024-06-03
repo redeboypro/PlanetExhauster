@@ -15,7 +15,7 @@ PlayerController::PlayerController(World* world, Input* input) : m_input(input),
     m_playerEnt = m_player->getEntity();
 
     m_cameraEnt = world->getCamera()->getEntity();
-    m_cameraEnt->setParent(m_playerEnt, false);
+    m_cameraEnt->setParent(m_playerEnt);
     m_player->isKinematic = false;
 }
 
@@ -52,7 +52,8 @@ void PlayerController::update(const GLfloat deltaTime) {
     const GLfloat rotationSpeed = deltaTime * CAMERA_SPEED;
     m_yaw -= static_cast<GLfloat>(m_input->getDeltaMousePositionX()) * rotationSpeed;
     m_pitch -= static_cast<GLfloat>(m_input->getDeltaMousePositionY()) * rotationSpeed;
+    m_pitch = CLAMP(m_pitch, CAMERA_PITCH_MIN, CAMERA_PITCH_MAX);
 
-    m_playerEnt->setLocalOrientation(glm::quat(glm::vec3 {0, m_yaw, 0}));
-    m_cameraEnt->setLocalOrientation(glm::quat(glm::vec3 {m_pitch, 0, 0}));
+    m_playerEnt->setLocalOrientation(glm::quat(glm::vec3 {0, glm::radians(m_yaw), 0}));
+    m_cameraEnt->setLocalOrientation(glm::quat(glm::vec3 {glm::radians(m_pitch), 0, 0}));
 }

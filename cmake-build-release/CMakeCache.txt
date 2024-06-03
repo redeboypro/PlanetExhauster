@@ -242,6 +242,24 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a library.
+DIRECTINPUT_ERR_LIBRARY:FILEPATH=DIRECTINPUT_ERR_LIBRARY-NOTFOUND
+
+//Path to a library.
+DIRECTINPUT_GUID_LIBRARY:FILEPATH=DIRECTINPUT_GUID_LIBRARY-NOTFOUND
+
+//Path to a file.
+DIRECTINPUT_INCLUDE_DIR:PATH=DIRECTINPUT_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+DIRECTINPUT_LIBRARY:FILEPATH=DIRECTINPUT_LIBRARY-NOTFOUND
+
+//Path to a file.
+DIRECTINPUT_ROOT_DIR:PATH=DIRECTINPUT_ROOT_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for DirectInput.
+DirectInput_DIR:PATH=DirectInput_DIR-NOTFOUND
+
 //Value Computed by CMake
 PlanetExhauster_BINARY_DIR:STATIC=C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release
 

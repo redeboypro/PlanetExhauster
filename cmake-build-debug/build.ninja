@@ -171,7 +171,7 @@ build CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj: CXX_COMPILER
 
 build PlanetExhauster.exe: CXX_EXECUTABLE_LINKER__PlanetExhauster_Debug CMakeFiles/PlanetExhauster.dir/main.cpp.obj CMakeFiles/PlanetExhauster.dir/GLAPI.cpp.obj CMakeFiles/PlanetExhauster.dir/Window.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Entity.cpp.obj CMakeFiles/PlanetExhauster.dir/World/World.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/Collider.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/GJK.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/Simplex.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/EPA.cpp.obj CMakeFiles/PlanetExhauster.dir/World/Physics/Rigidbody.cpp.obj CMakeFiles/PlanetExhauster.dir/Input.cpp.obj CMakeFiles/PlanetExhauster.dir/AssetManager.cpp.obj CMakeFiles/PlanetExhauster.dir/GUI/Font.cpp.obj CMakeFiles/PlanetExhauster.dir/GUI/GUI.cpp.obj CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.obj CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj
   FLAGS = -g
-  LINK_LIBRARIES = -lopengl32  -static  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -lopengl32  -ldinput8  -ldxguid  -static  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PlanetExhauster.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

@@ -23,7 +23,7 @@ void Input::init() {
     }
 
     RECT windowRect;
-    GetWindowRect(m_wndHandle, &windowRect);
+    GetWindowRect(m_wndHandle->getHandle(), &windowRect);
 
     const int32_t centerX = (windowRect.left + windowRect.right) / 2;
     const int32_t centerY = (windowRect.top + windowRect.bottom) / 2;
@@ -39,11 +39,12 @@ void Input::begin() {
     }
 
     GetCursorPos(&m_currentMousePosition);
-    ScreenToClient(m_wndHandle, &m_currentMousePosition);
-    m_deltaMousePosition = {
-        m_currentMousePosition.x - m_lastMousePosition.x,
-        m_currentMousePosition.y - m_lastMousePosition.y
-    };
+    ScreenToClient(m_wndHandle->getHandle(), &m_currentMousePosition);
+
+    if (FAILED(m_mouseDevice->GetDeviceState(sizeof(DIMOUSESTATE), &m_mouseState))) {
+        std::cerr << "Failed to get mouse device state" << std::endl;
+    }
+    m_deltaMousePosition = {m_mouseState.lX, m_mouseState.lY};
 }
 
 void Input::end() {
@@ -51,5 +52,4 @@ void Input::end() {
         auto key = static_cast<KeyCode>(i);
         m_lastKeyboardState[key] = m_currentKeyboardState[key];
     }
-    m_lastMousePosition = m_currentMousePosition;
 }

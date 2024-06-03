@@ -5,9 +5,13 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <windows.h>
+#define INITGUID
 #include <cstdint>
 #include <unordered_map>
+#include <dinput.h>
+#include <iostream>
+
+#include "Window.h"
 
 #define KEY_COUNT 256
 
@@ -124,13 +128,45 @@ class Input {
     std::unordered_map<KeyCode, bool> m_lastKeyboardState;
 
     POINT m_currentMousePosition {};
-    POINT m_lastMousePosition {};
     POINT m_deltaMousePosition {};
 
-    HWND m_wndHandle;
+    Window* m_wndHandle;
+
+    LPDIRECTINPUT8 m_directInputHandle {};
+    LPDIRECTINPUTDEVICE8 m_mouseDevice {};
+    DIMOUSESTATE m_mouseState;
 
 public:
-    explicit Input(HWND__* wndHandle) : m_wndHandle(wndHandle) {}
+    explicit Input(Window* wndHandle) : m_wndHandle(wndHandle), m_mouseState() {
+        if (FAILED(DirectInput8Create(GetModuleHandle(nullptr), DIRECTINPUT_VERSION, IID_IDirectInput8,
+                                reinterpret_cast<void **>(&m_directInputHandle), nullptr))) {
+            std::cerr << "Failed to create DirectInput8 instance" << std::endl;
+        }
+
+        if (FAILED(m_directInputHandle->CreateDevice(GUID_SysMouse, &m_mouseDevice, nullptr))) {
+            std::cerr << "Failed to create mouse device instance" << std::endl;
+        }
+
+        if (FAILED(m_mouseDevice->SetDataFormat(&c_dfDIMouse))) {
+            std::cerr << "Failed to set device data format" << std::endl;
+        }
+
+        if (FAILED(m_mouseDevice->SetCooperativeLevel(wndHandle->getHandle(), DISCL_NONEXCLUSIVE | DISCL_FOREGROUND))) {
+            std::cerr << "Failed to set device cooperative level" << std::endl;
+        }
+
+        if (FAILED(m_mouseDevice->Acquire())) {
+            std::cerr << "Failed to acquire mouse device" << std::endl;
+        }
+    }
+
+    ~Input() {
+        if (FAILED(m_mouseDevice->Unacquire())) {
+            std::cerr << "Failed to unacquire mouse device" << std::endl;
+        }
+        m_mouseDevice->Release();
+        m_directInputHandle->Release();
+    }
 
     int32_t getMousePositionX() const {
         return m_currentMousePosition.x;

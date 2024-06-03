@@ -7,10 +7,14 @@
 #include "../World/World.h"
 #include "../Input.h"
 
-#define PLAYER_SIZE       0.5F
-#define PLAYER_SPEED      3.0F
-#define CAMERA_SPEED      5.0F
-#define PLAYER_JUMP_FORCE 5.0F
+#define PLAYER_SIZE         0.5F
+#define PLAYER_SPEED        3.0F
+#define CAMERA_SPEED        10.0F
+#define CAMERA_PITCH_MIN    (-90.0F)
+#define CAMERA_PITCH_MAX    90.0F
+#define PLAYER_JUMP_FORCE   5.0F
+
+#define CLAMP(ANGLE, MIN, MAX) ANGLE < MIN ? MIN : ANGLE > MAX ? MAX : ANGLE
 
 class PlayerController {
     Rigidbody* m_player;
@@ -26,6 +30,7 @@ class PlayerController {
 public:
     PlayerController(World* world, Input* input);
     ~PlayerController();
+
     void update(GLfloat deltaTime);
 };
 

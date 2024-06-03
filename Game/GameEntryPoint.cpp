@@ -20,7 +20,7 @@ std::string GameEntryPoint::readFile(const std::string &fileName) {
 GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
     ShowWindow(GetConsoleWindow(), SW_HIDE);
     m_window = new Window(GAME_TITLE, GAME_WIN_W, GAME_WIN_H, 3, 3);
-    m_input = new Input(m_window->getHandle());
+    m_input = new Input(m_window);
     m_input->init();
 
     const ShaderAttrib shaderVertexAttrib {
@@ -64,13 +64,19 @@ GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
 
     m_landscape = m_world->instantiate(World::defaultLayer);
     auto* landscapeEnt = m_landscape->getEntity();
-    landscapeEnt->setLocalPosition(-unit_y);
+    landscapeEnt->setLocalPosition(-unit_y * 3.0F);
     landscapeEnt->setLocalScale(glm::vec3 {5.0F});
     landscapeEnt->setMesh(m_assetManager->loadMesh(LANDSCAPE_MESH_FILEPATH));
-    landscapeEnt->setTexture(m_assetManager->loadTexture(
-        CLIFFS_TEXTURE_FILEPATH,
-        textureParameters));
+    landscapeEnt->setTexture(m_assetManager->loadTexture(CLIFFS_TEXTURE_FILEPATH, textureParameters));
     m_landscape->setCollisionShapes(m_assetManager->loadCollision(LANDSCAPE_COLLISIONMESH_FILEPATH));
+
+    const auto* pistol = m_world->instantiate(PISTOL_LAYER);
+    auto* pistolEnt = pistol->getEntity();
+    pistolEnt->setParent(m_world->getCamera()->getEntity());
+    pistolEnt->setLocalPosition(glm::vec3 {1.5F, -2.5F, -5});
+    pistolEnt->setLocalOrientation(glm::quat(glm::vec3 {0, glm::radians(-90.0F), 0}));
+    pistolEnt->setMesh(m_assetManager->loadMesh(PISTOL_MESH_FILEPATH));
+    pistolEnt->setTexture(m_assetManager->loadTexture(PISTOL_TEXTURE_FILEPATH, textureParameters));
 
     while (m_window->running()) {
         GLfloat deltaTime;

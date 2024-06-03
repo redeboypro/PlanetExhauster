@@ -11,6 +11,7 @@
 
 #define WND_CLASSNAME "_WND"
 
+using WindowMessageCallback = LRESULT CALLBACK(HWND__ *wndHandle, uint32_t msg, WPARAM wParam, LPARAM lParam);
 using TimePt = std::chrono::time_point<std::chrono::system_clock>;
 
 class Window {
@@ -20,6 +21,7 @@ class Window {
     bool m_running = true;
     TimePt m_previousTime;
 
+    static WindowMessageCallback WndProc;
 public:
     Window(
         LPCSTR wndTitle,

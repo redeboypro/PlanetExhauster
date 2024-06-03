@@ -32,7 +32,7 @@ Entity::Entity(const bool isCamera) : m_isCamera(isCamera), m_isActive(true) {
 
 Entity::~Entity() {
     for (const auto child : m_children) {
-        child->setParent(nullptr, true);
+        child->setParent(nullptr);
     }
 }
 
@@ -47,7 +47,7 @@ glm::vec3 Entity::localToWorld(const glm::vec3 &vec) const {
     return m_worldOrientation * (vec * m_worldScale) + m_worldPosition;
 }
 
-void Entity::setParent(Entity* parent, const bool worldTransformStays) { // NOLINT(*-no-recursion)
+void Entity::setParent(Entity* parent) { // NOLINT(*-no-recursion)
     if (m_parent and m_parent != parent) {
         m_parent->removeChild(this);
     }
@@ -59,27 +59,20 @@ void Entity::setParent(Entity* parent, const bool worldTransformStays) { // NOLI
     m_parent = parent;
     update();
 
-    if (worldTransformStays) {
-        m_worldPosition = worldPosition;
-        m_worldOrientation = worldOrientation;
-        m_worldScale = worldScale;
-        update();
-    }
-
     m_parent->addChild(this);
 }
 
 void Entity::addChild(Entity* child) { // NOLINT(*-no-recursion)
     if (std::ranges::find(m_children, child) != m_children.end()) return;
     m_children.push_back(child);
-    child->setParent(this, true);
+    child->setParent(this);
 }
 
 void Entity::removeChild(Entity *child) { // NOLINT(*-no-recursion)
     const auto childIt = std::ranges::find(m_children, child);
     if (childIt == m_children.end()) return;
     m_children.erase(childIt);
-    child->setParent(nullptr, true);
+    child->setParent(nullptr);
 }
 
 

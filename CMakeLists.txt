@@ -43,6 +43,7 @@ add_executable(PlanetExhauster main.cpp
 )
 
 target_link_libraries(PlanetExhauster opengl32)
+target_link_libraries(PlanetExhauster dinput8 dxguid)
 
 include_directories(D:/glm-1.0.1-light/glm)
 

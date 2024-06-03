@@ -21,6 +21,10 @@
 #define LANDSCAPE_MESH_FILEPATH "landscape.pem"
 #define LANDSCAPE_COLLISIONMESH_FILEPATH "landscape.pecm"
 
+#define PISTOL_MESH_FILEPATH "pistol.pem"
+#define PISTOL_TEXTURE_FILEPATH "pistol.pet"
+#define PISTOL_LAYER "Pistol"
+
 #define GAME_TITLE "Planet Exhauster"
 #define GAME_WIN_W 800
 #define GAME_WIN_H 600

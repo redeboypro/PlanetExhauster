@@ -41,13 +41,19 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 49,
+				"line" : 46,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 50,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 47,
+				"line" : 48,
 				"parent" : 0
 			}
 		]
@@ -58,13 +64,13 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++23 -fdiagnostics-color=always"
+					"fragment" : "-O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
 					"path" : "D:/glm-1.0.1-light/glm"
 				}
 			],
@@ -104,7 +110,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-O3 -DNDEBUG",
 				"role" : "flags"
 			},
 			{
@@ -118,6 +124,16 @@
 			},
 			{
 				"backtrace" : 3,
+				"fragment" : "-ldinput8",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-ldxguid",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
 				"fragment" : "-static",
 				"role" : "libraries"
 			},

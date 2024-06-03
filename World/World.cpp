@@ -106,8 +106,6 @@ void World::update(const float deltaTime) {
 void World::render() {
     if (!m_shader) return;
     m_shader->use();
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
     for (const auto& layerTitle: m_layersOrder) {
         auto& layer = m_layers[layerTitle];
         glClear(GL_DEPTH_BUFFER_BIT);
@@ -123,10 +121,8 @@ void World::render() {
             m_shader->uniform4f(glColorUniform, color.r, color.g, color.b, color.a);
 
             const auto* cameraEnt = m_camera->getEntity();
-            glm::mat4 viewMatrix = toMat4(conjugate(cameraEnt->getWorldOrientation())) *
-                translate(-cameraEnt->getWorldPosition());
 
-            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(glm::inverse(cameraEnt->getWorldMatrix())), false);
+            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(inverse(cameraEnt->getWorldMatrix())), false);
             m_shader->uniformMatrix4fv(glProjectionMatrixUniform, value_ptr(m_projectionMatrix), false);
             m_shader->uniformMatrix4fv(glModelMatrixUniform, value_ptr(entity->getWorldMatrix()), false);
 
@@ -136,9 +132,16 @@ void World::render() {
             }
 
             mesh->getVertexArray()->bind();
+
+            glEnableVertexAttribArray(0);
+            glEnableVertexAttribArray(1);
+
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->indices.size()), GL_UNSIGNED_INT, nullptr);
+
+            glDisableVertexAttribArray(0);
+            glDisableVertexAttribArray(1);
+
+            glBindVertexArray(0);
         }
     }
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
 }

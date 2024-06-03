@@ -4,12 +4,9 @@
 
 #include "Window.h"
 
-LRESULT CALLBACK WndMsgCb(HWND__ *wndHandle, const uint32_t msg, const WPARAM wParam, const LPARAM lParam)
-{
-    switch (msg)
-    {
-        case WM_CLOSE:
-        {
+LRESULT CALLBACK Window::WndProc(HWND__ *wndHandle, const uint32_t msg, const WPARAM wParam, const LPARAM lParam) {
+    switch (msg) {
+        case WM_CLOSE: {
             PostQuitMessage(0);
             break;
         }
@@ -32,7 +29,7 @@ width(wndWidth), height(wndHeight){
     const WNDCLASSEX wndClass = {
         .cbSize = sizeof(WNDCLASSEX),
         .style = CS_OWNDC,
-        .lpfnWndProc = &WndMsgCb,
+        .lpfnWndProc = &WndProc,
         .cbClsExtra = 0,
         .cbWndExtra = 0,
         .hInstance = GetModuleHandle(nullptr),

@@ -43,7 +43,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Release"
+			"value" : "Debug"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release"
+			"value" : "c:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1270,6 +1270,78 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "DIRECTINPUT_ERR_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "DIRECTINPUT_ERR_LIBRARY-NOTFOUND"
+		},
+		{
+			"name" : "DIRECTINPUT_GUID_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "DIRECTINPUT_GUID_LIBRARY-NOTFOUND"
+		},
+		{
+			"name" : "DIRECTINPUT_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "DIRECTINPUT_INCLUDE_DIR-NOTFOUND"
+		},
+		{
+			"name" : "DIRECTINPUT_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "DIRECTINPUT_LIBRARY-NOTFOUND"
+		},
+		{
+			"name" : "DIRECTINPUT_ROOT_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "DIRECTINPUT_ROOT_DIR-NOTFOUND"
+		},
+		{
+			"name" : "DirectInput_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for DirectInput."
+				}
+			],
+			"type" : "PATH",
+			"value" : "DirectInput_DIR-NOTFOUND"
+		},
+		{
 			"name" : "PlanetExhauster_BINARY_DIR",
 			"properties" : 
 			[
@@ -1279,7 +1351,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-release"
+			"value" : "C:/Users/redeb/CLionProjects/PlanetExhauster/cmake-build-debug"
 		},
 		{
 			"name" : "PlanetExhauster_IS_TOP_LEVEL",
