@@ -24,7 +24,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/probn/source/repos/PlanetExhauster/external/glm-1.0.1-light/glm"/>
+					<Add directory="D:/glm-1.0.1-light/glm"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
@@ -47,7 +47,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/probn/source/repos/PlanetExhauster/external/glm-1.0.1-light/glm"/>
+					<Add directory="D:/glm-1.0.1-light/glm"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
 					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
@@ -133,6 +133,12 @@
 			<Option target="PlanetExhauster"/>
 		</Unit>
 		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/Map/ObstaclesGrid.h">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/PlayerController.cpp">
+			<Option target="PlanetExhauster"/>
+		</Unit>
+		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Game/PlayerController.h">
 			<Option target="PlanetExhauster"/>
 		</Unit>
 		<Unit filename="C:/Users/probn/source/repos/PlanetExhauster/Input.cpp">

@@ -4,16 +4,14 @@
 
 #include "ObstaclesGrid.h"
 
-Map::ObstaclesGrid::ObstaclesGrid(Entity *obstaclesParent, World *world, const glm::ivec2 &size)
-        : m_world(world), m_obstaclesParent(obstaclesParent), m_size(size) {
-    m_rigidbody = m_world->instantiate(World::defaultLayer);
+Map::ObstaclesGrid::ObstaclesGrid(Entity *entity, Rigidbody *rigidbody, const glm::ivec2 &size, World *world)
+        : m_world(world), m_entity(entity), m_rigidbody(rigidbody), m_size(size) {
     m_rigidbody->isKinematic = true;
-    m_entity = m_rigidbody->getEntity();
 
-    m_grid.reserve(m_size.x);
+    m_grid = std::vector<std::vector<bool>>(size.x);
 
-    for (std::vector<bool> o: m_grid) {
-        o.reserve(m_size.y);
+    for (std::vector<bool> &o: m_grid) {
+        o = std::vector<bool>(size.y);
     }
 }
 
@@ -24,10 +22,22 @@ void Map::ObstaclesGrid::add(const Map::Obstacle &obstacle, int x, int y) {
         }
     }
 
-    m_world->instantiate(obstacle.getRigidbody(), World::defaultLayer);
+    Rigidbody* instantiated = m_world->instantiate(World::defaultLayer);
+    instantiated->isKinematic = true;
+    Entity *obstacleEnt = instantiated->getEntity();
 
-    m_obstaclesParent->addChild(obstacle.getEntity());
-    obstacle.getEntity()->setLocalPosition(glm::vec3(x, 0, y));
+    obstacleEnt->setLocalPosition(obstacle.getEntity()->getLocalPosition());
+    obstacleEnt->setMesh(obstacle.getEntity()->getMesh());
+    obstacleEnt->setTexture(obstacle.getEntity()->getTexture());
+
+    m_entity->addChild(obstacleEnt);
+
+    glm::vec3 startPos = obstacleEnt->getLocalPosition();
+
+    obstacleEnt->setLocalPosition(-m_entity->worldToLocal(
+            glm::vec3(startPos.x + static_cast<float>(x) * OBSTACLE_XZ_OFFSET, OBSTACLE_Y_OFFSET, startPos.z + static_cast<float>(y) * (-OBSTACLE_XZ_OFFSET))));
+
+    obstacleEnt->setLocalScale(glm::vec3(0.1));
 }
 
 bool Map::ObstaclesGrid::hasAt(int x, int y) {

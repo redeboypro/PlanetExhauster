@@ -17,30 +17,39 @@ bool Input::getKey(const KeyCode key) {
 }
 
 void Input::init() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_currentKeyboardState[key] = m_lastKeyboardState[key] = false;
     }
+
+    RECT windowRect;
+    GetWindowRect(m_wndHandle->getHandle(), &windowRect);
+
+    const int32_t centerX = (windowRect.left + windowRect.right) / 2;
+    const int32_t centerY = (windowRect.top + windowRect.bottom) / 2;
+
+    SetCursorPos(centerX, centerY);
+    ClipCursor(&windowRect);
 }
 
 void Input::begin() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_currentKeyboardState[key] = (GetAsyncKeyState(i) & 0x8000) != 0;
     }
 
     GetCursorPos(&m_currentMousePosition);
-    ScreenToClient(m_wndHandle, &m_currentMousePosition);
-    m_deltaMousePosition = {
-        m_currentMousePosition.x - m_lastMousePosition.x,
-        m_currentMousePosition.y - m_lastMousePosition.y
-    };
+    ScreenToClient(m_wndHandle->getHandle(), &m_currentMousePosition);
+
+    if (FAILED(m_mouseDevice->GetDeviceState(sizeof(DIMOUSESTATE), &m_mouseState))) {
+        std::cerr << "Failed to get mouse device state" << std::endl;
+    }
+    m_deltaMousePosition = {m_mouseState.lX, m_mouseState.lY};
 }
 
 void Input::end() {
-    for (int32_t i = 0; i < 256; ++i) {
+    for (int32_t i = 0; i <= 165; ++i) {
         auto key = static_cast<KeyCode>(i);
         m_lastKeyboardState[key] = m_currentKeyboardState[key];
     }
-    m_lastMousePosition = m_currentMousePosition;
 }

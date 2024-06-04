@@ -1,3 +1,4 @@
+
 //
 // Created by redeb on 25.05.2024.
 //
@@ -5,14 +6,14 @@
 #include "World.h"
 
 World::World(
-    const float fov,
-    const float aspect,
-    const float cameraNear, const float cameraFar) :
-m_shader(nullptr),
-m_projectionMatrix(glm::perspective(
-    fov,
-    aspect,
-    cameraNear, cameraFar)) {
+        const float fov,
+        const float aspect,
+        const float cameraNear, const float cameraFar) :
+        m_shader(nullptr),
+        m_projectionMatrix(glm::perspective(
+                fov,
+                aspect,
+                cameraNear, cameraFar)) {
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
     glEnable(GL_TEXTURE_2D);
@@ -75,7 +76,7 @@ void World::update(const float deltaTime) {
 
             rigidbodyA->accelerateFall(deltaTime);
             entityA->setLocalPosition(entityA->getLocalPosition() +
-                glm::vec3 {0, rigidbodyA->getFallVelocity() * deltaTime, 0});
+                                      glm::vec3 {0, rigidbodyA->getFallVelocity() * deltaTime, 0});
 
             std::vector<Rigidbody*> triggers;
             std::vector<Response> responses;
@@ -85,10 +86,10 @@ void World::update(const float deltaTime) {
                 for (int32_t indexB = 0; indexB < layerB.size(); ++indexB) {
                     auto* rigidbodyB = layerB[indexB];
                     if (const auto* entityB = rigidbodyB->getEntity();
-                        (indexA == indexB and layerAIndex == layerBIndex) or
-                        !entityB->active() or
-                        rigidbodyA->ignoresTag(entityB->getTag()) or
-                        rigidbodyB->ignoresTag(entityA->getTag())) {
+                            (indexA == indexB and layerAIndex == layerBIndex) or
+                            !entityB->active() or
+                            rigidbodyA->ignoresTag(entityB->getTag()) or
+                            rigidbodyB->ignoresTag(entityA->getTag())) {
                         continue;
                     }
                     rigidbodyA->resolveCollision(rigidbodyB, triggers, responses);
@@ -106,8 +107,6 @@ void World::update(const float deltaTime) {
 void World::render() {
     if (!m_shader) return;
     m_shader->use();
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
     for (const auto& layerTitle: m_layersOrder) {
         auto& layer = m_layers[layerTitle];
         glClear(GL_DEPTH_BUFFER_BIT);
@@ -121,7 +120,10 @@ void World::render() {
 
             m_shader->uniform1i(glHasTextureUniform, texture != nullptr);
             m_shader->uniform4f(glColorUniform, color.r, color.g, color.b, color.a);
-            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(m_camera->getEntity()->getViewMatrix()), false);
+
+            const auto* cameraEnt = m_camera->getEntity();
+
+            m_shader->uniformMatrix4fv(glViewMatrixUniform, value_ptr(inverse(cameraEnt->getWorldMatrix())), false);
             m_shader->uniformMatrix4fv(glProjectionMatrixUniform, value_ptr(m_projectionMatrix), false);
             m_shader->uniformMatrix4fv(glModelMatrixUniform, value_ptr(entity->getWorldMatrix()), false);
 
@@ -131,9 +133,16 @@ void World::render() {
             }
 
             mesh->getVertexArray()->bind();
+
+            glEnableVertexAttribArray(0);
+            glEnableVertexAttribArray(1);
+
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->indices.size()), GL_UNSIGNED_INT, nullptr);
+
+            glDisableVertexAttribArray(0);
+            glDisableVertexAttribArray(1);
+
+            glBindVertexArray(0);
         }
     }
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
 }

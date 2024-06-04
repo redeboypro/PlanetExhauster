@@ -1,3 +1,4 @@
+
 //
 // Created by redeb on 25.05.2024.
 //
@@ -32,16 +33,16 @@ class Rigidbody final {
 
 public:
     explicit Rigidbody(Entity* entity):
-    m_entity(entity),
-    m_isGrounded(false),
-    m_stepLimitAngle(30.0F / 90.0F),
-    m_fallVelocity(0),
-    m_fallAcceleration(-50.0F),
-    isKinematic(true),
-    isTrigger(false) {}
+            m_entity(entity),
+            m_isGrounded(false),
+            m_stepLimitAngle(30.0F / 90.0F),
+            m_fallVelocity(0),
+            m_fallAcceleration(-50.0F),
+            isKinematic(true),
+            isTrigger(false) {}
 
     explicit Rigidbody(const bool isCamera) :
-    Rigidbody(new Entity(isCamera)) {}
+            Rigidbody(new Entity(isCamera)) {}
 
     ~Rigidbody() {
         delete m_entity;
@@ -95,14 +96,18 @@ public:
         m_collisionShapes = collisionShapes;
     }
 
+    void setCollisionShapes(const std::vector<Collider*>& collisionShapes) {
+        m_collisionShapes = collisionShapes;
+    }
+
     void accelerateFall(const float deltaTime) {
         m_fallVelocity += m_fallAcceleration * deltaTime;
     }
 
     void resolveCollision(
-        Rigidbody* other,
-        std::vector<Rigidbody*>& triggers,
-        std::vector<Response>& responses);
+            Rigidbody* other,
+            std::vector<Rigidbody*>& triggers,
+            std::vector<Response>& responses);
 
     void refreshTriggers(const std::vector<Rigidbody*>& others);
     void refreshResponses(const std::vector<Response>& responses);

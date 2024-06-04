@@ -1,3 +1,4 @@
+
 //
 // Created by redeb on 25.05.2024.
 //
@@ -10,9 +11,9 @@
 #include "GJK.h"
 
 void Rigidbody::resolveCollision(
-    Rigidbody *other,
-    std::vector<Rigidbody*>& triggers,
-    std::vector<Response>& responses) {
+        Rigidbody *other,
+        std::vector<Rigidbody*>& triggers,
+        std::vector<Response>& responses) {
     for (const auto shapeA : m_collisionShapes) {
         if (!shapeA) continue;
 
@@ -61,9 +62,9 @@ void Rigidbody::refreshTriggers(const std::vector<Rigidbody*>& others) {
 void Rigidbody::refreshResponses(const std::vector<Response> &responses) {
     for (const auto [rigidbody, collision] : m_responses) {
         if (std::ranges::find_if(responses,
-            [&](const Response& localResponse) {
-                return localResponse.rigidbody == rigidbody;
-            }) == responses.end()) {
+                                 [&](const Response& localResponse) {
+                                     return localResponse.rigidbody == rigidbody;
+                                 }) == responses.end()) {
             if (collisionExit) collisionExit(rigidbody, collision);
         }
     }

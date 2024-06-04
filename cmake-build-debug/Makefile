@@ -320,6 +320,30 @@ Game/Map/ObstaclesGrid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.s
 .PHONY : Game/Map/ObstaclesGrid.cpp.s
 
+Game/PlayerController.obj: Game/PlayerController.cpp.obj
+.PHONY : Game/PlayerController.obj
+
+# target to build an object file
+Game/PlayerController.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj
+.PHONY : Game/PlayerController.cpp.obj
+
+Game/PlayerController.i: Game/PlayerController.cpp.i
+.PHONY : Game/PlayerController.i
+
+# target to preprocess a source file
+Game/PlayerController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.i
+.PHONY : Game/PlayerController.cpp.i
+
+Game/PlayerController.s: Game/PlayerController.cpp.s
+.PHONY : Game/PlayerController.s
+
+# target to generate assembly for a file
+Game/PlayerController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PlanetExhauster.dir\build.make CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.s
+.PHONY : Game/PlayerController.cpp.s
+
 Input.obj: Input.cpp.obj
 .PHONY : Input.obj
 
@@ -593,6 +617,9 @@ help:
 	@echo ... Game/Map/ObstaclesGrid.obj
 	@echo ... Game/Map/ObstaclesGrid.i
 	@echo ... Game/Map/ObstaclesGrid.s
+	@echo ... Game/PlayerController.obj
+	@echo ... Game/PlayerController.i
+	@echo ... Game/PlayerController.s
 	@echo ... Input.obj
 	@echo ... Input.i
 	@echo ... Input.s

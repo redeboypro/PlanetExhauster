@@ -9,12 +9,12 @@
 #include <string>
 #include <fstream>
 #include <iterator>
-#include "Mesh.h"
-#include "Texture.h"
+#include "World/Physics/Collider.h"
 
 class AssetManager {
     std::vector<Mesh*> m_meshes;
     std::vector<TextureRgba*> m_textures;
+    std::vector<Collider*> m_colliders;
 
     static char* readBuffer(const std::string& fileName);
 
@@ -46,6 +46,11 @@ public:
 
     Mesh* loadMesh(const std::string& fileName);
     TextureRgba* loadTexture(const std::string& fileName, std::initializer_list<TexParameter> parameters);
+    std::vector<Collider*> loadCollision(const std::string& fileName);
+
+    void addExternal(Mesh* mesh);
+    void addExternal(TextureRgba* texture);
+    void addExternal(Collider* collider);
 };
 
 

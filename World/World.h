@@ -1,3 +1,4 @@
+
 //
 // Created by redeb on 25.05.2024.
 //
@@ -15,9 +16,9 @@
 
 struct World final {
     World(
-        float fov,
-        float aspect,
-        float cameraNear, float cameraFar);
+            float fov,
+            float aspect,
+            float cameraNear, float cameraFar);
 
     ~World();
 
@@ -37,6 +38,16 @@ struct World final {
 
     void instantiate(Rigidbody* rigidbody, const std::string& layer);
     Rigidbody* instantiate(const std::string& layer);
+
+    void destroy(const Rigidbody* rigidbody, const std::string& layer) {
+        auto& layerRoot = m_layers[layer];
+        if (const auto it = std::ranges::find(layerRoot, rigidbody); it != layerRoot.end()) {
+            layerRoot.erase(it);
+            return;
+        }
+
+        std::cerr << "Object not found!" << std::endl;
+    }
 
     void setLayersOrder(std::initializer_list<std::string> layersOrder);
 

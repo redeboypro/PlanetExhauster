@@ -12,7 +12,6 @@
 namespace Map{
     class ObstaclesGenerator
     {
-        World* m_world;
         Map::ObstaclesGrid* m_grid;
         std::vector<Map::Obstacle> m_prefabs;
 
@@ -21,7 +20,7 @@ namespace Map{
 
         bool canPlaceAt(int placeX, int placeY, glm::ivec2 size);
     public:
-        ObstaclesGenerator(Map::ObstaclesGrid* grid, std::vector<Map::Obstacle> prefabs, World* world);
+        ObstaclesGenerator(Map::ObstaclesGrid* grid, std::vector<Map::Obstacle> prefabs);
 
         void generate();
     };

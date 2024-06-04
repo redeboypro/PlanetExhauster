@@ -293,20 +293,20 @@ CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.s"
 	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\probn\source\repos\PlanetExhauster\Game\GameEntryPoint.cpp -o CMakeFiles\PlanetExhauster.dir\Game\GameEntryPoint.cpp.s
 
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/flags.make
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/includes_CXX.rsp
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: C:/Users/probn/source/repos/PlanetExhauster/Game/Map/Obstacle.cpp
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj"
-	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj -MF CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.obj.d -o CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.obj -c C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj: CMakeFiles/PlanetExhauster.dir/flags.make
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj: CMakeFiles/PlanetExhauster.dir/includes_CXX.rsp
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj: C:/Users/probn/source/repos/PlanetExhauster/Game/PlayerController.cpp
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj: CMakeFiles/PlanetExhauster.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj -MF CMakeFiles\PlanetExhauster.dir\Game\PlayerController.cpp.obj.d -o CMakeFiles\PlanetExhauster.dir\Game\PlayerController.cpp.obj -c C:\Users\probn\source\repos\PlanetExhauster\Game\PlayerController.cpp
 
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.i"
-	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp > CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.i
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.i"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\probn\source\repos\PlanetExhauster\Game\PlayerController.cpp > CMakeFiles\PlanetExhauster.dir\Game\PlayerController.cpp.i
 
-CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.s"
-	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp -o CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.s
+CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.s"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\probn\source\repos\PlanetExhauster\Game\PlayerController.cpp -o CMakeFiles\PlanetExhauster.dir\Game\PlayerController.cpp.s
 
 CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj: CMakeFiles/PlanetExhauster.dir/flags.make
 CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj: CMakeFiles/PlanetExhauster.dir/includes_CXX.rsp
@@ -338,6 +338,21 @@ CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.s"
 	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\probn\source\repos\PlanetExhauster\Game\Map\ObstaclesGenerator.cpp -o CMakeFiles\PlanetExhauster.dir\Game\Map\ObstaclesGenerator.cpp.s
 
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/flags.make
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/includes_CXX.rsp
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: C:/Users/probn/source/repos/PlanetExhauster/Game/Map/Obstacle.cpp
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj: CMakeFiles/PlanetExhauster.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj -MF CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.obj.d -o CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.obj -c C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp
+
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.i"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp > CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.i
+
+CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.s"
+	C:\PROGRA~1\mingw64\bin\C__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\probn\source\repos\PlanetExhauster\Game\Map\Obstacle.cpp -o CMakeFiles\PlanetExhauster.dir\Game\Map\Obstacle.cpp.s
+
 # Object files for target PlanetExhauster
 PlanetExhauster_OBJECTS = \
 "CMakeFiles/PlanetExhauster.dir/main.cpp.obj" \
@@ -355,9 +370,10 @@ PlanetExhauster_OBJECTS = \
 "CMakeFiles/PlanetExhauster.dir/GUI/Font.cpp.obj" \
 "CMakeFiles/PlanetExhauster.dir/GUI/GUI.cpp.obj" \
 "CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.obj" \
-"CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj" \
+"CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj" \
 "CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj" \
-"CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.obj"
+"CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.obj" \
+"CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj"
 
 # External object files for target PlanetExhauster
 PlanetExhauster_EXTERNAL_OBJECTS =
@@ -377,14 +393,15 @@ PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/AssetManager.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/GUI/Font.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/GUI/GUI.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/GameEntryPoint.cpp.obj
-PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj
+PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.obj
+PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/Game/Map/Obstacle.cpp.obj
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/build.make
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/linkLibs.rsp
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/objects1.rsp
 PlanetExhauster.exe: CMakeFiles/PlanetExhauster.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable PlanetExhauster.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\probn\source\repos\PlanetExhauster\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable PlanetExhauster.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PlanetExhauster.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

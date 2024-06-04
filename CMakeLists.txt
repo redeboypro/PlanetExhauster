@@ -38,12 +38,19 @@ add_executable(PlanetExhauster main.cpp
         Primitives.h
         Game/GameEntryPoint.cpp
         Game/GameEntryPoint.h
-        Game/Map/Obstacle.cpp Game/Map/Obstacle.h Game/Map/ObstaclesGrid.cpp Game/Map/ObstaclesGrid.h
+        Game/PlayerController.cpp
+        Game/PlayerController.h
+        Game/Map/ObstaclesGrid.h
+        Game/Map/ObstaclesGrid.cpp
+        Game/Map/ObstaclesGenerator.h
         Game/Map/ObstaclesGenerator.cpp
-        Game/Map/ObstaclesGenerator.h)
+        Game/Map/Obstacle.h
+        Game/Map/Obstacle.cpp
+)
 
 target_link_libraries(PlanetExhauster opengl32)
+target_link_libraries(PlanetExhauster dinput8 dxguid)
 
-include_directories(external/glm-1.0.1-light/glm)
+include_directories(D:/glm-1.0.1-light/glm)
 
 target_link_libraries(PlanetExhauster -static)

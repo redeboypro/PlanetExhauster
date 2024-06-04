@@ -4,8 +4,6 @@
 
 #include "GJK.h"
 
-#include <iostream>
-
 namespace GJK {
     glm::vec3 supportPoint(const EntityCollision& objA, const EntityCollision& objB, const glm::vec3 &direction) {
         return objA.collider->findFurthestPoint(objA.entity, direction) - objB.collider->findFurthestPoint(objB.entity, -direction);
@@ -62,6 +60,8 @@ namespace GJK {
         return false;
     }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ConstantFunctionResult"
     // ReSharper disable once CppDFAConstantFunctionResult
     bool triangle(Simplex& simplex, glm::vec3& direction) {
         glm::vec3 a = simplex[0];
@@ -94,6 +94,7 @@ namespace GJK {
 
         return false;
     }
+#pragma clang diagnostic pop
 
     bool tetrahedron(Simplex &simplex, glm::vec3 &direction) {
         glm::vec3 a = simplex[0];

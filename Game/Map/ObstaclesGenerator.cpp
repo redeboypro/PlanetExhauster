@@ -4,8 +4,8 @@
 
 #include "ObstaclesGenerator.h"
 
-Map::ObstaclesGenerator::ObstaclesGenerator(Map::ObstaclesGrid *grid, std::vector<Map::Obstacle> prefabs, World *world)
-        : m_world(world), m_grid(grid), m_prefabs(std::move(prefabs)) {}
+Map::ObstaclesGenerator::ObstaclesGenerator(Map::ObstaclesGrid *grid, std::vector<Map::Obstacle> prefabs)
+        : m_grid(grid), m_prefabs(std::move(prefabs)) {}
 
 bool Map::ObstaclesGenerator::canPlaceAt(int placeX, int placeY, glm::ivec2 size) {
     for (int i = -1; i < size.x + 1; i++) {
@@ -34,7 +34,7 @@ void Map::ObstaclesGenerator::generate() {
 
         int count = 0;
 
-        for (Obstacle o: m_randomObstacles) {
+        for (const Obstacle &o: m_randomObstacles) {
             if (o.getMaxCount() == obstacle.getMaxCount()) {
                 count++;
             }
@@ -50,7 +50,7 @@ void Map::ObstaclesGenerator::generate() {
         int randomY = std::uniform_int_distribution<>(0, m_grid->getSize().y - 1)(m_generator);
 
         if (canPlaceAt(randomX, randomY, obstacle.getSize())) {
-            m_grid->add(obstacle, randomX, randomY, m_world);
+            m_grid->add(obstacle, randomX, randomY);
         }
     }
 }

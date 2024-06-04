@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGenerator.cpp.obj.d"
   "CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj"
   "CMakeFiles/PlanetExhauster.dir/Game/Map/ObstaclesGrid.cpp.obj.d"
+  "CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj"
+  "CMakeFiles/PlanetExhauster.dir/Game/PlayerController.cpp.obj.d"
   "CMakeFiles/PlanetExhauster.dir/Input.cpp.obj"
   "CMakeFiles/PlanetExhauster.dir/Input.cpp.obj.d"
   "CMakeFiles/PlanetExhauster.dir/Window.cpp.obj"

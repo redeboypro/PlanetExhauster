@@ -10,21 +10,22 @@
 #include "Obstacle.h"
 #include "../../World/World.h"
 
+static const float OBSTACLE_Y_OFFSET = -1;
+static const float OBSTACLE_XZ_OFFSET = 5;
+
 namespace Map
 {
     class ObstaclesGrid
     {
         World* m_world;
-
         Entity *m_entity;
         Rigidbody *m_rigidbody;
-        Entity *m_obstaclesParent;
 
         glm::ivec2 m_size;
         std::vector<std::vector<bool>> m_grid;
 
     public:
-        ObstaclesGrid(Entity *obstaclesParent, World *world, const glm::ivec2 &size = glm::ivec2(6, 6));
+        ObstaclesGrid(Entity *entity, Rigidbody *rigidbody, const glm::ivec2 &size, World *world);
 
         void add(const Map::Obstacle &obstacle, int x, int y);
 
