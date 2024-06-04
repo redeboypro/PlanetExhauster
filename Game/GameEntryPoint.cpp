@@ -78,6 +78,14 @@ GameEntryPoint::GameEntryPoint(): m_assetManager(new AssetManager()) {
     pistolEnt->setMesh(m_assetManager->loadMesh(PISTOL_MESH_FILEPATH));
     pistolEnt->setTexture(m_assetManager->loadTexture(PISTOL_TEXTURE_FILEPATH, textureParameters));
 
+    m_dino = new DinoActor(m_world);
+    m_dino->getEntity()->setLocalPosition(unit_z * 5.0F);
+    m_dino->getEntity()->setLocalScale(glm::vec3 {0.3F});
+    m_dino->setModelData(
+        m_assetManager->loadMesh(DINOMEAT_MESH_FILEPATH),
+        m_assetManager->loadTexture(DINOMEAT_TEXTURE_FILEPATH, textureParameters));
+    m_dino->setTarget(m_player->getRigidbody());
+
     while (m_window->running()) {
         GLfloat deltaTime;
         m_window->beginFrame(deltaTime);
@@ -106,4 +114,5 @@ GameEntryPoint::~GameEntryPoint() {
 
 void GameEntryPoint::update(const GLfloat deltaTime) const {
     m_player->update(deltaTime);
+    m_dino->update(deltaTime);
 }

@@ -10,19 +10,12 @@
 #include "../Entity.h"
 
 struct Collider final {
-    Collider(const glm::vec3 &min, const glm::vec3 &max) : m_vertices({
-        glm::vec3(min.x, min.y, min.z),
-        glm::vec3(min.x, max.y, min.z),
-        glm::vec3(max.x, min.y, min.z),
-        glm::vec3(max.x, max.y, min.z),
-
-        glm::vec3(min.x, min.y, max.z),
-        glm::vec3(min.x, max.y, max.z),
-        glm::vec3(max.x, min.y, max.z),
-        glm::vec3(max.x, max.y, max.z),
-    }) {}
+    Collider(const glm::vec3 &min, const glm::vec3 &max);
     explicit Collider(const std::vector<glm::vec3>& vertices) : m_vertices(vertices) {}
     explicit Collider(const Mesh* mesh);
+
+    void setVertices(const std::vector<glm::vec3>& vertices);
+    void setVertices(const glm::vec3 &min, const glm::vec3 &max);
 
     [[nodiscard]] glm::vec3 findFurthestPoint(const Entity* entity, const glm::vec3& direction) const;
 

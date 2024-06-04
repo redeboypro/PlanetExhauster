@@ -36,7 +36,7 @@ public:
     m_isGrounded(false),
     m_stepLimitAngle(30.0F / 90.0F),
     m_fallVelocity(0),
-    m_fallAcceleration(-50.0F),
+    m_fallAcceleration(50.0F),
     isKinematic(true),
     isTrigger(false) {}
 
@@ -100,7 +100,7 @@ public:
     }
 
     void accelerateFall(const float deltaTime) {
-        m_fallVelocity += m_fallAcceleration * deltaTime;
+        m_fallVelocity -= m_fallAcceleration * deltaTime;
     }
 
     void resolveCollision(

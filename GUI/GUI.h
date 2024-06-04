@@ -15,7 +15,7 @@
 
 #define glGuiTransformMatrix "transform_matrix"
 
-class GUI {
+class GUI final {
     Font* m_font = nullptr;
     Shader* m_shader;
     Input* m_input;

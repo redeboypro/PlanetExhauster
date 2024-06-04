@@ -16,7 +16,7 @@
 
 #define CLAMP(ANGLE, MIN, MAX) ANGLE < MIN ? MIN : ANGLE > MAX ? MAX : ANGLE
 
-class PlayerController {
+class PlayerController final {
     Rigidbody* m_player;
     Entity* m_playerEnt;
     Entity* m_cameraEnt;
@@ -30,6 +30,8 @@ class PlayerController {
 public:
     PlayerController(World* world, Input* input);
     ~PlayerController();
+
+    [[nodiscard]] Rigidbody* getRigidbody() const;
 
     void update(GLfloat deltaTime);
 };

@@ -23,6 +23,10 @@ PlayerController::~PlayerController() {
     delete m_collider;
 }
 
+Rigidbody* PlayerController::getRigidbody() const {
+    return m_player;
+}
+
 void PlayerController::update(const GLfloat deltaTime) {
     const GLfloat absoluteSpeed = deltaTime * PLAYER_SPEED;
 

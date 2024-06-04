@@ -4,6 +4,7 @@
 
 #ifndef GAMEENTRYPOINT_H
 #define GAMEENTRYPOINT_H
+#include "DinoActor.h"
 #include "PlayerController.h"
 #include "../AssetManager.h"
 #include "../GUI/GUI.h"
@@ -25,6 +26,9 @@
 #define PISTOL_TEXTURE_FILEPATH "pistol.pet"
 #define PISTOL_LAYER "Pistol"
 
+#define DINOMEAT_MESH_FILEPATH "dinomeat.pem"
+#define DINOMEAT_TEXTURE_FILEPATH "dinomeat.pet"
+
 #define GAME_TITLE "Planet Exhauster"
 #define GAME_WIN_W 800
 #define GAME_WIN_H 600
@@ -33,7 +37,7 @@
 #define GAME_CAMERA_NEAR 0.1F
 #define GAME_CAMERA_FAR 100.0F
 
-class GameEntryPoint {
+class GameEntryPoint final {
     Window* m_window;
     Input* m_input;
 
@@ -47,8 +51,9 @@ class GameEntryPoint {
 
     //Game objects in the root:
     PlayerController* m_player;
-
     Rigidbody* m_landscape;
+
+    DinoActor* m_dino;
 
     static std::string readFile(const std::string& fileName);
 public:

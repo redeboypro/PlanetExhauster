@@ -123,7 +123,7 @@ enum class KeyCode : int32_t {
     Alpha9 = 57
 };
 
-class Input {
+class Input final {
     std::unordered_map<KeyCode, bool> m_currentKeyboardState;
     std::unordered_map<KeyCode, bool> m_lastKeyboardState;
 

@@ -12,7 +12,7 @@
 
 class TextureRgba;
 
-struct FontChar {
+struct FontChar final {
     FontChar(const float left, const float right, const float top, const float bottom) {
         m_vertexArray = new VAO();
         m_vertexArray->bind();

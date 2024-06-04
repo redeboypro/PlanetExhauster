@@ -14,6 +14,8 @@ class Mesh final {
     VBO* m_vertexBuffer;
     VBO* m_texCoordBuffer;
     EBO* m_indexBuffer;
+
+    glm::vec3 m_min {FLT_MAX}, m_max {FLT_MAX};
 public:
     Mesh() {
         m_vertexArray = new VAO();
@@ -34,6 +36,9 @@ public:
     const std::vector<GLfloat>& texCoords = m_texCoords;
     const std::vector<GLuint>& indices = m_indices;
 
+    const glm::vec3& min = m_min;
+    const glm::vec3& max = m_max;
+
     [[nodiscard]] VAO* getVertexArray() const {
         return m_vertexArray;
     }
@@ -43,6 +48,20 @@ public:
         m_vertexArray->bind();
         if (!m_vertexBuffer->store(vertices.data(), static_cast<GLsizei>(vertices.size()))) {
             glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, nullptr);
+        }
+
+        for (int vi = 0; vi < vertices.size(); vi += 3) {
+            const GLfloat& x = vertices[vi];
+            const GLfloat& y = vertices[vi + 1];
+            const GLfloat& z = vertices[vi + 2];
+
+            m_min.x = std::min(x, m_min.x);
+            m_min.y = std::min(y, m_min.y);
+            m_min.z = std::min(z, m_min.z);
+
+            m_max.x = std::max(x, m_max.x);
+            m_max.y = std::max(y, m_max.y);
+            m_max.z = std::max(z, m_max.z);
         }
     }
 

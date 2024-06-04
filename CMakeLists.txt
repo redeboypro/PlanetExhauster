@@ -40,6 +40,10 @@ add_executable(PlanetExhauster main.cpp
         Game/GameEntryPoint.h
         Game/PlayerController.cpp
         Game/PlayerController.h
+        Game/DinoActor.cpp
+        Game/DinoActor.h
+        World/Physics/Raycast.cpp
+        World/Physics/Raycast.h
 )
 
 target_link_libraries(PlanetExhauster opengl32)
